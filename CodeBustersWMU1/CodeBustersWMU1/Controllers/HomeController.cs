@@ -26,5 +26,11 @@ namespace CodeBustersWMU1.Controllers
 
             return View();
         }
+        public ActionResult Products()
+        {
+            ViewBag.Message = "Produkter.";
+
+            return View();
+        }
     }
 }

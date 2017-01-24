@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CodeBustersWMU1.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+<div class="row">
+    <div class="col-md-4">
+        <h2 class="">Sale på massor med varor</h2>
+        <img src="~/images/145Zapdos.png" alt="bild" width="300" height="400" />
+        <p>
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more »</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Vad ska vi ha här?</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Vad ska vi ha här?</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArticleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remaining)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.ArticleName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Description)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Price)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Remaining)
+        </td>
+    </tr>
+}
+
+</table>
