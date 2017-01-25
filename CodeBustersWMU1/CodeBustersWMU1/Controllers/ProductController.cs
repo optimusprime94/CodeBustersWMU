@@ -9,14 +9,14 @@ namespace CodeBustersWMU1.Controllers
 {
     public class ProductController : Controller
     {
-        
 
-        
+        DataClasses1DataContext db = new DataClasses1DataContext();
+
 
         // GET: Product
         public ActionResult Products()
         {
-            var db = new DataClasses1DataContext();
+            
 
             return View(db.Products.ToList());
         }

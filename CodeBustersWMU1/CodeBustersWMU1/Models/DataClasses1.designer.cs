@@ -28,12 +28,12 @@ namespace CodeBustersWMU1.Models
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
-    #region Extensibility Method Definitions
-    partial void OnCreated();
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
-    #endregion
+	#region Extensibility Method Definitions
+	partial void OnCreated();
+	partial void InsertProduct(Product instance);
+	partial void UpdateProduct(Product instance);
+	partial void DeleteProduct(Product instance);
+	#endregion
 		
 		public DataClasses1DataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Database1ConnectionString"].ConnectionString, mappingSource)
@@ -88,34 +88,34 @@ namespace CodeBustersWMU1.Models
 		
 		private System.Data.Linq.Binary _Image;
 		
-		private System.Nullable<int> _Price;
+		private int _Price;
 		
-		private System.Nullable<int> _Remaining;
+		private int _Remaining;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnArticleIdChanging(int value);
-    partial void OnArticleIdChanged();
-    partial void OnArticleNameChanging(string value);
-    partial void OnArticleNameChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
-    partial void OnImageChanged();
-    partial void OnPriceChanging(System.Nullable<int> value);
-    partial void OnPriceChanged();
-    partial void OnRemainingChanging(System.Nullable<int> value);
-    partial void OnRemainingChanged();
-    #endregion
+	#region Extensibility Method Definitions
+	partial void OnLoaded();
+	partial void OnValidate(System.Data.Linq.ChangeAction action);
+	partial void OnCreated();
+	partial void OnArticleIdChanging(int value);
+	partial void OnArticleIdChanged();
+	partial void OnArticleNameChanging(string value);
+	partial void OnArticleNameChanged();
+	partial void OnDescriptionChanging(string value);
+	partial void OnDescriptionChanged();
+	partial void OnImageChanging(System.Data.Linq.Binary value);
+	partial void OnImageChanged();
+	partial void OnPriceChanging(int value);
+	partial void OnPriceChanged();
+	partial void OnRemainingChanging(int value);
+	partial void OnRemainingChanged();
+	#endregion
 		
 		public Product()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ArticleId
 		{
 			get
@@ -175,7 +175,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Image
 		{
 			get
@@ -195,8 +195,8 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
+		public int Price
 		{
 			get
 			{
@@ -215,8 +215,8 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int")]
-		public System.Nullable<int> Remaining
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int NOT NULL")]
+		public int Remaining
 		{
 			get
 			{
