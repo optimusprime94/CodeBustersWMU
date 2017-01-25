@@ -226,11 +226,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\025Pikachu.png" />
-    <Content Include="images\144Articuno.png" />
-    <Content Include="images\145Zapdos.png" />
-    <Content Include="images\146Moltres.png" />
-    <Content Include="images\king.gif" />
+    <Content Include="images\logo1.png" />
+    <Content Include="images\logo2.jpg" />
+    <Content Include="images\logo3.jpg" />
+    <Content Include="images\logo4.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
