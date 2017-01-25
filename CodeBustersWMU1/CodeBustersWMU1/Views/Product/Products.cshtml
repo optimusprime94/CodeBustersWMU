@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ArticleName)
+        <a href="~/Home/About">@Html.DisplayFor(modelItem => item.ArticleName)</a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
