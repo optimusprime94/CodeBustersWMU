@@ -21,5 +21,12 @@ namespace CodeBustersWMU1.Controllers
             return View(db.Products.ToList());
         }
 
+        public ActionResult Description(int id)
+        {
+
+
+            return View(id);
+        }
+
     }
 }

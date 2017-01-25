@@ -6,9 +6,7 @@
 
 <h2>Products</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -26,24 +24,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
-        <a href="~/Home/About">@Html.DisplayFor(modelItem => item.ArticleName)</a>
+            @Html.DisplayFor(modelItem => item.ArticleName)
+
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
+    <!-- 1:namn på sidan, 2: filnamn, 3: Mapp -->
+
+    </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Remaining)
+            @{
+                /* Visar olika typer av meddelanden beroende på antalet som finns kvar av varan */
+                string message = "";
+                int remains = int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString());
+
+                if (remains <= 5)
+                {
+                    message = "Bara " + remains + "st kvar";
+                }
+                else if (remains <= 10)
+                {
+                    message = "Bara ett fåtal kvar";
+                }
+                else
+                {
+                    message = "Finns i lager";
+                    //@Html.DisplayFor(modelItem => item.Remaining)
+                }
+            }
+            <p>@message</p>
+            
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ArticleId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ArticleId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ArticleId })
+            @Html.ActionLink("Description", "Description", "DescriptionController", new { id = @item.ArticleId })
         </td>
     </tr>
 }
