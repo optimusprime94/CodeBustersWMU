@@ -28,12 +28,12 @@ namespace CodeBustersWMU1.Models
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
-	#region Extensibility Method Definitions
-	partial void OnCreated();
-	partial void InsertProduct(Product instance);
-	partial void UpdateProduct(Product instance);
-	partial void DeleteProduct(Product instance);
-	#endregion
+    #region Extensibility Method Definitions
+    partial void OnCreated();
+    partial void InsertProduct(Product instance);
+    partial void UpdateProduct(Product instance);
+    partial void DeleteProduct(Product instance);
+    #endregion
 		
 		public DataClasses1DataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Database1ConnectionString"].ConnectionString, mappingSource)
@@ -80,117 +80,57 @@ namespace CodeBustersWMU1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ArticleId;
-		
-		private string _ArticleName;
-		
-		private string _Description;
-		
-		private System.Data.Linq.Binary _Image;
+		private int _Remaining;
 		
 		private int _Price;
 		
-		private int _Remaining;
+		private string _Image;
 		
-	#region Extensibility Method Definitions
-	partial void OnLoaded();
-	partial void OnValidate(System.Data.Linq.ChangeAction action);
-	partial void OnCreated();
-	partial void OnArticleIdChanging(int value);
-	partial void OnArticleIdChanged();
-	partial void OnArticleNameChanging(string value);
-	partial void OnArticleNameChanged();
-	partial void OnDescriptionChanging(string value);
-	partial void OnDescriptionChanged();
-	partial void OnImageChanging(System.Data.Linq.Binary value);
-	partial void OnImageChanged();
-	partial void OnPriceChanging(int value);
-	partial void OnPriceChanged();
-	partial void OnRemainingChanging(int value);
-	partial void OnRemainingChanged();
-	#endregion
+		private string _Description;
+		
+		private string _ArticleName;
+		
+		private int _ArticleId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRemainingChanging(int value);
+    partial void OnRemainingChanged();
+    partial void OnPriceChanging(int value);
+    partial void OnPriceChanged();
+    partial void OnImageChanging(string value);
+    partial void OnImageChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnArticleNameChanging(string value);
+    partial void OnArticleNameChanged();
+    partial void OnArticleIdChanging(int value);
+    partial void OnArticleIdChanged();
+    #endregion
 		
 		public Product()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ArticleId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int NOT NULL")]
+		public int Remaining
 		{
 			get
 			{
-				return this._ArticleId;
+				return this._Remaining;
 			}
 			set
 			{
-				if ((this._ArticleId != value))
+				if ((this._Remaining != value))
 				{
-					this.OnArticleIdChanging(value);
+					this.OnRemainingChanging(value);
 					this.SendPropertyChanging();
-					this._ArticleId = value;
-					this.SendPropertyChanged("ArticleId");
-					this.OnArticleIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string ArticleName
-		{
-			get
-			{
-				return this._ArticleName;
-			}
-			set
-			{
-				if ((this._ArticleName != value))
-				{
-					this.OnArticleNameChanging(value);
-					this.SendPropertyChanging();
-					this._ArticleName = value;
-					this.SendPropertyChanged("ArticleName");
-					this.OnArticleNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this.OnImageChanging(value);
-					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
+					this._Remaining = value;
+					this.SendPropertyChanged("Remaining");
+					this.OnRemainingChanged();
 				}
 			}
 		}
@@ -215,22 +155,82 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int NOT NULL")]
-		public int Remaining
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+		public string Image
 		{
 			get
 			{
-				return this._Remaining;
+				return this._Image;
 			}
 			set
 			{
-				if ((this._Remaining != value))
+				if ((this._Image != value))
 				{
-					this.OnRemainingChanging(value);
+					this.OnImageChanging(value);
 					this.SendPropertyChanging();
-					this._Remaining = value;
-					this.SendPropertyChanged("Remaining");
-					this.OnRemainingChanged();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string ArticleName
+		{
+			get
+			{
+				return this._ArticleName;
+			}
+			set
+			{
+				if ((this._ArticleName != value))
+				{
+					this.OnArticleNameChanging(value);
+					this.SendPropertyChanging();
+					this._ArticleName = value;
+					this.SendPropertyChanged("ArticleName");
+					this.OnArticleNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ArticleId
+		{
+			get
+			{
+				return this._ArticleId;
+			}
+			set
+			{
+				if ((this._ArticleId != value))
+				{
+					this.OnArticleIdChanging(value);
+					this.SendPropertyChanging();
+					this._ArticleId = value;
+					this.SendPropertyChanged("ArticleId");
+					this.OnArticleIdChanged();
 				}
 			}
 		}

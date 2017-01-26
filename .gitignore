@@ -250,3 +250,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/CodeBustersWMU1/CodeBustersWMU1/App_Data/App_Data.zip
+/CodeBustersWMU1/CodeBustersWMU1/App_Data/

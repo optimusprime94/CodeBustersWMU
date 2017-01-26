@@ -9,8 +9,9 @@
     
 </head>
 <body>
-    <img src="~/images/logo1.png" width="350" height="170" alt="POKEMART" />
-
+    <div style="padding-left:10px; padding-bottom: 10px">
+        <img src="~/images/logo1.jpg" width="350" height="170" alt="POKEMART"  />
+    </div>
         <!-- navbar-fixed-top -->
         <div class="navbar navbar-inverse ">
             
@@ -21,15 +22,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("PokeMart", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Hem", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <!-- 1:namn på sidan, 2: filnamn, 3: Mapp -->
-                        <li>@Html.ActionLink("Products", "Products", "Product")</li> 
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Produkter", "Products", "Product")</li> 
+                        <li>@Html.ActionLink("Om oss", "About", "Home")</li>
+                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

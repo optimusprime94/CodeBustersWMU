@@ -1,25 +1,25 @@
 ﻿@model IEnumerable<CodeBustersWMU1.Models.Product>
 
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = "Produkter";
 }
 
-<h2>Products</h2>
+<h2>Produkter</h2>
 
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ArticleName)
+            @Html.Label("Artikel namn")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.Label("Bild")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.Label("Pris/st")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Remaining)
+            @Html.Label("Lagerstatus")
         </th>
         <th></th>
     </tr>
@@ -35,6 +35,14 @@
     <!-- 1:namn på sidan, 2: filnamn, 3: Mapp -->
 
     </td>
+
+        <td>
+           @{ 
+               String path = item.Image;
+               @Html.Label(path);
+               }
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
@@ -62,7 +70,7 @@
             
         </td>
         <td>
-            @Html.ActionLink("Description", "Description", "DescriptionController", new { id = @item.ArticleId })
+            @Html.ActionLink("Mer Info", "Description", "DescriptionController", new { id = @item.ArticleId })
         </td>
     </tr>
 }
