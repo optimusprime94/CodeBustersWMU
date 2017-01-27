@@ -4,16 +4,25 @@
     ViewBag.Title = "Produkter";
 }
 
+@* css styling för att description div taggen inte ska bli för bred *@
+<style type="text/css">
+    #description {
+        width: 300px;
+        margin: auto;
+    }
+</style>
+
+
 <h2>Produkter</h2>
 
 
 <table class="table">
     <tr>
         <th>
-            @Html.Label("Artikel namn")
+            @Html.Label("Bild")
         </th>
         <th>
-            @Html.Label("Bild")
+            @Html.Label("Artikel namn")
         </th>
         <th>
             @Html.Label("Pris/st")
@@ -24,55 +33,74 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArticleName)
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
 
-        </td>
-        <td>
-    <!-- 1:namn på sidan, 2: filnamn, 3: Mapp -->
-
-    </td>
-
-        <td>
-           @{ 
-               String path = item.Image;
-               @Html.Label(path);
-               }
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @{
-                /* Visar olika typer av meddelanden beroende på antalet som finns kvar av varan */
-                string message = "";
-                int remains = int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString());
-
-                if (remains <= 5)
-                {
-                    message = "Bara " + remains + "st kvar";
+                @{  String path = "";
+                path = @Html.DisplayFor(modelItem => item.Image).ToString();
                 }
-                else if (remains <= 10)
-                {
-                    message = "Bara ett fåtal kvar";
+                    <img src="@path" alt="bild" width="300" height="300" />
+
+               
+            </td>
+
+            <td>
+
+                <div id="description">
+
+                    @Html.ActionLink(@item.ArticleName, "Description", "Description")
+
+                    @{
+                        System.Web.HttpContext.Current.Session["descriptionValue"] = item.Description;
+                    }
+                    <br />
+                    <br />
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+            </td>
+            <td>
+                @{
+                    int price = item.Price;
+                    string priceString = price.ToString("C");
+                    @Html.Label(priceString);
                 }
-                else
-                {
-                    message = "Finns i lager";
-                    //@Html.DisplayFor(modelItem => item.Remaining)
+            </td>
+            <td>
+                @{
+                    /* Visar olika typer av meddelanden beroende på antalet som finns kvar av varan */
+                    string message = "";
+                    int remains = int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString());
+                    if (remains == 0)
+                    {
+                        message = "Slut i lager";
+                    }
+                    else if (remains <= 5)
+                    {
+                        message = "Bara " + remains + "st kvar";
+                    }
+                    else if (remains <= 10)
+                    {
+                        message = "Bara ett fåtal kvar";
+                    }
+                    else
+                    {
+                        message = "Finns i lager";
+                        //@Html.DisplayFor(modelItem => item.Remaining)
+                    }
                 }
-            }
-            <p>@message</p>
-            
-        </td>
-        <td>
-            @Html.ActionLink("Mer Info", "Description", "DescriptionController", new { id = @item.ArticleId })
-        </td>
-    </tr>
-}
+                <p>@message</p>
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Lägg till Kundvagn", "Description", "DescriptionController", new { id = @item.ArticleId })
+            </td>
+        </tr>
+                    }
+
+
+
 
 </table>

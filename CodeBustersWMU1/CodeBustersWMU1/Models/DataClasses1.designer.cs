@@ -28,12 +28,12 @@ namespace CodeBustersWMU1.Models
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
-    #region Extensibility Method Definitions
-    partial void OnCreated();
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
-    #endregion
+	#region Extensibility Method Definitions
+	partial void OnCreated();
+	partial void InsertProduct(Product instance);
+	partial void UpdateProduct(Product instance);
+	partial void DeleteProduct(Product instance);
+	#endregion
 		
 		public DataClasses1DataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Database1ConnectionString"].ConnectionString, mappingSource)
@@ -92,23 +92,23 @@ namespace CodeBustersWMU1.Models
 		
 		private int _ArticleId;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRemainingChanging(int value);
-    partial void OnRemainingChanged();
-    partial void OnPriceChanging(int value);
-    partial void OnPriceChanged();
-    partial void OnImageChanging(string value);
-    partial void OnImageChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnArticleNameChanging(string value);
-    partial void OnArticleNameChanged();
-    partial void OnArticleIdChanging(int value);
-    partial void OnArticleIdChanged();
-    #endregion
+	#region Extensibility Method Definitions
+	partial void OnLoaded();
+	partial void OnValidate(System.Data.Linq.ChangeAction action);
+	partial void OnCreated();
+	partial void OnRemainingChanging(int value);
+	partial void OnRemainingChanged();
+	partial void OnPriceChanging(int value);
+	partial void OnPriceChanged();
+	partial void OnImageChanging(string value);
+	partial void OnImageChanged();
+	partial void OnDescriptionChanging(string value);
+	partial void OnDescriptionChanged();
+	partial void OnArticleNameChanging(string value);
+	partial void OnArticleNameChanged();
+	partial void OnArticleIdChanging(int value);
+	partial void OnArticleIdChanged();
+	#endregion
 		
 		public Product()
 		{
@@ -155,7 +155,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string Image
 		{
 			get
@@ -175,7 +175,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Description
 		{
 			get

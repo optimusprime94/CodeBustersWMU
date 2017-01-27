@@ -220,11 +220,6 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
-    <Content Include="App_Data\images\logo1.jpg" />
-    <Content Include="App_Data\images\logo1.png" />
-    <Content Include="App_Data\images\logo2.jpg" />
-    <Content Include="App_Data\images\logo3.jpg" />
-    <Content Include="App_Data\images\logo4.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap2.css" />
@@ -232,14 +227,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images - Copy\logo1.png" />
-    <Content Include="images - Copy\logo2.jpg" />
-    <Content Include="images - Copy\logo3.jpg" />
-    <Content Include="images - Copy\logo4.png" />
+    <Content Include="images\logo1.jpg" />
     <Content Include="images\logo1.png" />
     <Content Include="images\logo2.jpg" />
     <Content Include="images\logo3.jpg" />
     <Content Include="images\logo4.png" />
+    <Content Include="images\nyheter.jpg" />
+    <Content Include="images\sale.jpg" />
+    <Content Include="images\top.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -266,6 +261,7 @@
     <Content Include="Views\Product\Images\144Articuno.png" />
     <Content Include="Views\Product\Images\145Zapdos.png" />
     <Content Include="Views\Product\Images\146Moltres.png" />
+    <Content Include="Views\Product\Images\150Mewtwo.png" />
     <Content Include="Views\Product\Images\king.gif" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -302,7 +298,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Product\Products.cshtml" />
-    <Content Include="Views\Product\Description.cshtml" />
+    <Content Include="Views\Description\Description.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">
@@ -320,9 +316,7 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Description\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

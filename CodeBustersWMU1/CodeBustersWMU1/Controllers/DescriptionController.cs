@@ -15,10 +15,11 @@ namespace CodeBustersWMU1.Controllers
         }
 
         // GET: Description/Details/5
-        public ActionResult Description(int id)
+        public ActionResult Description()
         {
-        
-            return View(id);
+
+            ViewData["Description"] = "heeeej";
+            return View();
         }
 
         // GET: Description/Create
