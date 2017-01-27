@@ -53,7 +53,7 @@
                     @Html.ActionLink(@item.ArticleName, "Description", "Description")
 
                     @{
-                        System.Web.HttpContext.Current.Session["descriptionValue"] = item.Description;
+                       Session["descriptionValue"] = item.Description;
                     }
                     <br />
                     <br />
