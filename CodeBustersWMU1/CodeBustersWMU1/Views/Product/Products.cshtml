@@ -13,6 +13,7 @@
 </style>
 
 
+
 <h2>Produkter</h2>
 
 
@@ -37,7 +38,6 @@
     {
         <tr>
             <td>
-
                 @{  String path = "";
                 path = @Html.DisplayFor(modelItem => item.Image).ToString();
                 }
@@ -61,11 +61,11 @@
                 </div>
             </td>
             <td>
-                @{
-                    int price = item.Price;
-                    string priceString = price.ToString("C");
-                    @Html.Label(priceString);
-                }
+                    @{
+                        int price = item.Price;
+                        string priceString = price.ToString("C");
+                       <label>@priceString</label>
+                    }
             </td>
             <td>
                 @{
