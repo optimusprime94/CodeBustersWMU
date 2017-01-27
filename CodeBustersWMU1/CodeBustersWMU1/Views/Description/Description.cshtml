@@ -5,4 +5,35 @@
 
 
 
-<p> @ViewData["Description"] </p>
+<table class="table">
+    @foreach (var test in Model)
+    {
+        <tr>
+            <td>
+                <div id="description">
+
+                    @*@Html.ActionLink(@test.ArticleName, "Description", "Description")*@
+
+                    @{
+                        Session["descriptionValue"] = @test.Description;
+                    }
+                    <br />
+                    <br />
+                    <p>Html.DisplayFor(modelItem => test.Description)</p>
+                </div>
+            </td>
+        </tr>
+                    }
+</table>
+
+@*<div>
+        <h1>Picture</h1>
+
+    </div>
+    <div>
+        <h1>Info</h1>
+        <p> @ViewData["Description"] </p>
+    </div>
+    <div>
+        <h1>Price</h1>
+    </div>*@

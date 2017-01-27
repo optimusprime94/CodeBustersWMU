@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using CodeBustersWMU1.Models;
 namespace CodeBustersWMU1.Controllers
 {
     public class DescriptionController : Controller
     {
+        DataClasses1DataContext db = new DataClasses1DataContext();
         // GET: Description
         public ActionResult Index()
         {
@@ -18,8 +19,8 @@ namespace CodeBustersWMU1.Controllers
         public ActionResult Description()
         {
 
-            ViewData["Description"] = "heeeej";
-            return View();
+            ViewData["Description"] = Session["descriptionValue"];
+            return View(db.Products.ToList());
         }
 
         // GET: Description/Create
