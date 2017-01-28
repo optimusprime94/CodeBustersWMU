@@ -1,0 +1,31 @@
+﻿@using CodeBustersWMU1.Models;
+@model CodeBustersWMU1.Models.Product
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div class="jumbotron" style="background-color:rgba(226, 226, 226, 0.70)">
+    <div class="row">
+        <div class="col-md-4">
+            @{
+                string path = @ViewData["Image"].ToString();
+            }
+            <img src="@path" alt="Pokemon" width="400" height="400"/>
+
+        </div>
+
+        <div class="col-md-4" style="padding-left:100px; width:auto">
+            <h2>@ViewData["ArticleName"]</h2> <br /><br />
+            @ViewData["Description"] <br /><br />
+            @{
+                int price = ViewData["Price"].ToInt();
+                <h3><strong>@price.ToString("C")</strong></h3>
+            }
+
+
+        </div>
+    </div>
+</div>
+

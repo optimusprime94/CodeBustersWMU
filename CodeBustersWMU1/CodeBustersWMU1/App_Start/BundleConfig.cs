@@ -24,8 +24,8 @@ namespace CodeBustersWMU1
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap2.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.css",
+                      "~/Content/Site.css"));
         }
     }
 }

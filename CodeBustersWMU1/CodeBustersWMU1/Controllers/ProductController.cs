@@ -10,15 +10,20 @@ namespace CodeBustersWMU1.Controllers
     public class ProductController : Controller
     {
 
-        DataClasses1DataContext db = new DataClasses1DataContext();
+        DataClasses1DataContext db;
 
 
         // GET: Product
         public ActionResult Products()
         {
-            
+            db = new DataClasses1DataContext();
 
             return View(db.Products.ToList());
+        }
+
+        public ActionResult ShoppingBag()
+        {
+            return View();
         }
 
     }

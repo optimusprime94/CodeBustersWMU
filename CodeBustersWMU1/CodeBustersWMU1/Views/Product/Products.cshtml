@@ -50,14 +50,17 @@
 
                 <div id="description">
 
-                    @Html.ActionLink(@item.ArticleName, "Description", "Description")
+                    @Html.ActionLink(@item.ArticleName, "Details", "Details", new { id = @item.ArticleId }, null)
 
+                    <br />
+                    <br />
                     @{
-                       Session["descriptionValue"] = item.Description;
+                        String description = @item.Description;
+                        description = description.Substring(0, 50);
+                        description = String.Concat(description, "...");
+
                     }
-                    <br />
-                    <br />
-                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p>@description</p>
                 </div>
             </td>
             <td>
@@ -87,7 +90,6 @@
                     else
                     {
                         message = "Finns i lager";
-                        //@Html.DisplayFor(modelItem => item.Remaining)
                     }
                 }
                 <p>@message</p>
@@ -95,10 +97,10 @@
             </td>
 
             <td>
-                @Html.ActionLink("Lägg till Kundvagn", "Description", "DescriptionController", new { id = @item.ArticleId })
+                @Html.ActionLink("Lägg till Kundvagn", "Details", "Details", new { id = @item.ArticleId }, null)
             </td>
         </tr>
-                    }
+     } @* For each loop, end *@
 
 
 

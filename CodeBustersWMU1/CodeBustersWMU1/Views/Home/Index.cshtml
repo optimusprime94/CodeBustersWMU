@@ -5,32 +5,33 @@
 
 
 
-<div class="row">
+<div class="row" id="frontPageBlocks">
+
     <div class="col-md-4">
         <h2 class="">Senaste</h2>
-       <img src="~/images/sale.jpg" alt="bild" width="300" height="600" />
-        <!-- @Html.ActionLink("Produkter", "Products", "Product", new { @style = "background:url('../../images/sale.jpg') no-repeat center right; display:block; height: 30px; width: 50px" }); -->
-       
+        <a href="@Url.Action("Products","Product")" style="background-image: url('/images/sale.jpg')">
+            <!--<img src="~/images/sale.jpg"  alt="bild" height="600" />-->
+            </a>
+    </div>
 
-
-
-
-            <p>
-            </p>
-</div>
     <div class="col-md-4">
         <h2>Nyheter</h2>
-        <img src="~/images/nyheter.jpg" alt="bild" width="300" height="600" />
+        <a href="@Url.Action("Contact","Home")" style="background-image: url('/images/nyheter.jpg')">
+            <!--<img src="~/images/nyheter.jpg" alt="bild"  height="600" /> <span class="col-lg-12"></span>-->
+            </a>
     </div>
+
     <div class="col-md-4">
         <h2>Nytt</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <a href="@Url.Action("Products","Product")" style="background-image: url('/images/approved.jpg')">
+            <!---<img src="~/images/approved.jpg" alt="bild" height="600" /> <span class="col-lg-12"></span>-->
+        </a>
     </div>
+
 </div>
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-color:darkseagreen">
     <h1>PokéMart</h1>
-    <p class="lead">Köp det senaste av random skit som du kan hitta, hos oss!</p>
+    <p class="lead">Detta är inte slavhandel, detta är bara Pokémon. Kom och köp hos oss!</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Erbjudanden! &raquo;</a></p>
 </div>
