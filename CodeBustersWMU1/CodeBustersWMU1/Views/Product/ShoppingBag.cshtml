@@ -5,13 +5,53 @@
 
 <h2>ShoppingBag</h2>
 
-@{
-    List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
-    foreach (var item in cartList)
-    {
-        <p>@item.Quantity</p>
 
-        <p>product @item.Item.ArticleName</p>
+@* Table to display the article information, this first part is the description of the table contents. *@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Artikel Id")
+        </th>
+        <th>
+            @Html.Label("Pris/st")
+        </th>
+        <th>
+            @Html.Label("Antal")
+        </th>
+        <th></th>
+    </tr>
+
+
+    @{
+        int total = 0;
+        List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+        foreach (var item in cartList)
+        {
+
+            <tr>
+                <th>
+                    @item.Item.ArticleId
+                </th>
+                <th>
+                    @item.Item.Price
+                </th>
+                <th>
+                    @item.Quantity
+                </th>
+                <th>
+                    @Html.ActionLink("Lägg till", "AddToCart", "Product", new { id = @item.Item.ArticleId }, null)
+                    @Html.ActionLink("Ta bort", "RemoveFromCart", "Product", new { id = @item.Item.ArticleId }, null)
+                </th>
+            </tr>
+
+                            total += @item.Item.Price;
+
+
+
+                        }
     }
-}
 
+</table>
+
+<label>@total.ToString("C")</label>

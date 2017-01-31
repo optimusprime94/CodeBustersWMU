@@ -31,26 +31,75 @@ namespace CodeBustersWMU1.Controllers
         {
             var session = HttpContext.Session;
             
-
+            // we need a shopping cart if we dont already have one.
             if (session["Cart"] == null)
             {
                 Session["Cart"] = new List<ShoppingCart>();
                 
             }
-            var q =
+
+            List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"]; // we get the shoppinglist
+
+            // if the item is already in the shopping list
+            foreach (var item in cartList)
+            {
+                if (item.Item.ArticleId == id)
+                {
+                    item.Quantity++;
+                    return RedirectToAction("ShoppingBag");
+                }
+            }
+
+            // if the element wasnt already in the list then
+            // we need to query for it.
+            var product =
                 from p in db.Products
                 where p.ArticleId == id
                 select p;
 
-            ShoppingCart item = new ShoppingCart(); // Cart Item
+            // Cart Item: so we can put the product inside of it.
+            ShoppingCart cartItem = new ShoppingCart(); 
 
-                item.Item = q.First();
-                item.Quantity = 1;
-                List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
-                cartList.Add(item);
+                cartItem.Item = product.First();
+                cartItem.Quantity = 1;
+
+                // adds the cartItem to the list of shopping items.
+                cartList.Add(cartItem);
                 // Go back to the main store page for more shopping
-                return RedirectToAction("Products");
+                return RedirectToAction("ShoppingBag");
             
+
+        }
+
+        public ActionResult RemoveFromCart(int id)
+        {
+            var session = HttpContext.Session;
+
+
+            if (session["Cart"] == null || id == 0)
+            {
+                return RedirectToAction("Products");
+
+            }
+
+            //We create a cartItem and put the product in the cartItem then
+            //if the product exists as cartItem in cartList, we remove it.
+            ShoppingCart cartItem = new ShoppingCart(); // Cart Item
+
+            List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+            foreach(var item in cartList)
+            {
+                if(item.Item.ArticleId == id)
+                {
+                    cartList.Remove(item);
+                    item.Quantity--;
+                    return RedirectToAction("ShoppingBag");
+                }
+            }
+            
+            // Go back to the main store page for more shopping
+            return RedirectToAction("ShoppingBag");
+
 
         }
     }
