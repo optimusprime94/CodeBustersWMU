@@ -13,11 +13,12 @@ namespace CodeBustersWMU1
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
- //           routes.MapRoute(
- //    name: "Description",
- //    url: "{controller}/{action}/{id}",
- //    defaults: new { controller = "Description", action = "Description", id = UrlParameter.Optional }
- //);
+            //routes.MapRoute(
+            //name: "Addtocart",
+            //url: "{controller}/{action}/{product}",
+            //defaults: new { controller = "Product", action = "AddToCart", product = UrlParameter.} 
+            //);
+            // Standard
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

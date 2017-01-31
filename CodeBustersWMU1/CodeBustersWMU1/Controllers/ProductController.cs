@@ -27,7 +27,7 @@ namespace CodeBustersWMU1.Controllers
         }
 
 
-        public ActionResult AddToCart(Product id)
+        public ActionResult AddToCart(int id)
         {
             var session = HttpContext.Session;
             
@@ -37,9 +37,14 @@ namespace CodeBustersWMU1.Controllers
                 Session["Cart"] = new List<ShoppingCart>();
                 
             }
+            var q =
+                from p in db.Products
+                where p.ArticleId == id
+                select p;
+
             ShoppingCart item = new ShoppingCart(); // Cart Item
 
-                item.Item = id;
+                item.Item = q.First();
                 item.Quantity = 1;
                 List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
                 cartList.Add(item);
