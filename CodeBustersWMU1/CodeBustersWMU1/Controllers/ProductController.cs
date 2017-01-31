@@ -78,7 +78,8 @@ namespace CodeBustersWMU1.Controllers
 
             if (session["Cart"] == null || id == 0)
             {
-                return RedirectToAction("Products");
+                // Cannot remove items...
+                return RedirectToAction("ShoppingBag");
 
             }
 
@@ -91,7 +92,10 @@ namespace CodeBustersWMU1.Controllers
             {
                 if(item.Item.ArticleId == id)
                 {
-                    cartList.Remove(item);
+                    if (item.Quantity == 1)
+                    {
+                        cartList.Remove(item);
+                    }
                     item.Quantity--;
                     return RedirectToAction("ShoppingBag");
                 }
