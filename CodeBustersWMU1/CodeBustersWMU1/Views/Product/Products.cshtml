@@ -97,8 +97,11 @@
             </td>
 
             <td>
-                    @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = @item.ArticleId }, null)
 
+                
+                @if (int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString()) > 0){
+                    @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = @item.ArticleId }, null)
+                    }
 </td>
         </tr>
                     } @* For each loop, end *@

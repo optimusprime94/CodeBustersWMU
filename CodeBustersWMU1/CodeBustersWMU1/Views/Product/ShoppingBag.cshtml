@@ -45,7 +45,7 @@
                 </th>
             </tr>
 
-                            total += @item.Item.Price;
+                            total += (@item.Item.Price * @item.Quantity);
 
 
 
@@ -55,3 +55,4 @@
 </table>
 
 <label>@total.ToString("C")</label>
+<label><a href="@Url.Action("Checkout", "Checkout")">Checkout</a></label>
