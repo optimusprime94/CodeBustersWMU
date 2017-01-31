@@ -9,14 +9,14 @@ namespace CodeBustersWMU1.Controllers
 {
     public class DetailsController : Controller
     {
-        DataClasses1DataContext db;
+        DataClasses1DataContext db = new DataClasses1DataContext();
 
 
 
         // GET: Description/Details/5
         public ActionResult Details(int id)
         {
-            db = new DataClasses1DataContext();
+            
             ViewBag.Message = "Details";
 
             List<Product> allProducts = db.Products.ToList();
@@ -42,6 +42,12 @@ namespace CodeBustersWMU1.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult _PopularProducts()
+        {
+
+            return PartialView();
         }
 
     }

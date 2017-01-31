@@ -8,6 +8,14 @@
       <Column Name="Description" Type="System.String" DbType="VarChar(400) NOT NULL" CanBeNull="false" />
       <Column Name="ArticleName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="ArticleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Product_Statistic" Member="Statistics" ThisKey="ArticleId" OtherKey="ArticleID" Type="Statistic" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Statistic" Member="Statistics">
+    <Type Name="Statistic">
+      <Column Name="ArticleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sold" Type="System.Int32" DbType="Int NOT NULL" IsReadOnly="true" CanBeNull="false" UpdateCheck="Always" />
+      <Association Name="Product_Statistic" Member="Product" ThisKey="ArticleID" OtherKey="ArticleId" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

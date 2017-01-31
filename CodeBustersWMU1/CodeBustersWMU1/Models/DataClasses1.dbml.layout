@@ -8,5 +8,18 @@
         <elementListCompartment Id="1f9ad9bd-1bf2-4a4c-8cd2-385d884a8211" absoluteBounds="1.3899999999999997, 1.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="3a9ec2dc-3b00-4659-801b-07e8a4a1606f" absoluteBounds="4.75, 2.25, 2, 1.1939925130208331">
+      <DataClassMoniker Name="/DataClasses1DataContext/Statistic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="096e18a5-2cb6-4b8c-aa82-847706dcad66" absoluteBounds="4.765, 2.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 2.73159912109375); (4.75 : 2.73159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/Product/Product_Statistic" />
+      <nodes>
+        <classShapeMoniker Id="b8d851da-ec7b-4541-b59a-5c78b461d971" />
+        <classShapeMoniker Id="3a9ec2dc-3b00-4659-801b-07e8a4a1606f" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

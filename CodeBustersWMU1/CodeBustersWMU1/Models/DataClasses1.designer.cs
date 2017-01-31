@@ -72,6 +72,14 @@ namespace CodeBustersWMU1.Models
 				return this.GetTable<Product>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Statistic> Statistics
+		{
+			get
+			{
+				return this.GetTable<Statistic>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
@@ -155,7 +163,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
 		public string Image
 		{
 			get
@@ -175,7 +183,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
 		public string Description
 		{
 			get
@@ -252,6 +260,44 @@ namespace CodeBustersWMU1.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Statistic")]
+	public partial class Statistic
+	{
+		
+		private int _ArticleID;
+		
+		private int _Sold = default(int);
+		
+		public Statistic()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleID", DbType="Int NOT NULL")]
+		public int ArticleID
+		{
+			get
+			{
+				return this._ArticleID;
+			}
+			set
+			{
+				if ((this._ArticleID != value))
+				{
+					this._ArticleID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sold", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int Sold
+		{
+			get
+			{
+				return this._Sold;
 			}
 		}
 	}

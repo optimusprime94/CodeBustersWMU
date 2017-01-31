@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<CodeBustersWMU1.Models.Product>
-
+@using CodeBustersWMU1.Models
 @{
     ViewBag.Title = "Produkter";
 }
@@ -39,7 +39,7 @@
         <tr>
             <td>
                 @{  String path = "";
-                path = @Html.DisplayFor(modelItem => item.Image).ToString();
+                    path = @Html.DisplayFor(modelItem => item.Image).ToString();
                 }
                     <img src="@path" alt="bild" width="300" height="300" />
 
@@ -97,10 +97,11 @@
             </td>
 
             <td>
-                @Html.ActionLink("Lägg till Kundvagn", "Details", "Details", new { id = @item.ArticleId }, null)
-            </td>
+                    @Html.ActionLink("AddToCart", "AddToCart", "Product", new { product = @item }, null);
+
+</td>
         </tr>
-     } @* For each loop, end *@
+                    } @* For each loop, end *@
 
 
 

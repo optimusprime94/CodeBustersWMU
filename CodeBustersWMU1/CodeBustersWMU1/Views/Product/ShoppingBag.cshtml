@@ -1,7 +1,17 @@
-﻿
+﻿@using CodeBustersWMU1.Models;
 @{
     ViewBag.Title = "ShoppingBag";
 }
 
 <h2>ShoppingBag</h2>
+
+@{
+    List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+    foreach (var item in cartList)
+    {
+        <p>@item.Quantity</p>
+
+        <p>product @item.Item.ArticleName</p>
+    }
+}
 

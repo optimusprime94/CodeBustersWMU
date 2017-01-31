@@ -10,13 +10,13 @@ namespace CodeBustersWMU1.Controllers
     public class ProductController : Controller
     {
 
-        DataClasses1DataContext db;
+        DataClasses1DataContext db = new DataClasses1DataContext();
 
 
         // GET: Product
         public ActionResult Products()
         {
-            db = new DataClasses1DataContext();
+
 
             return View(db.Products.ToList());
         }
@@ -26,5 +26,27 @@ namespace CodeBustersWMU1.Controllers
             return View();
         }
 
+
+        public ActionResult AddToCart(Product id)
+        {
+            var session = HttpContext.Session;
+            
+
+            if (session["Cart"] == null)
+            {
+                Session["Cart"] = new List<ShoppingCart>();
+                
+            }
+            ShoppingCart item = new ShoppingCart(); // Cart Item
+
+                item.Item = id;
+                item.Quantity = 1;
+                List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+                cartList.Add(item);
+                // Go back to the main store page for more shopping
+                return RedirectToAction("Products");
+            
+
+        }
     }
 }
