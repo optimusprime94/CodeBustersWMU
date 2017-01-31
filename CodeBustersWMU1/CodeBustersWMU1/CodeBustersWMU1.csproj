@@ -309,6 +309,7 @@
     <Content Include="Views\Details\Details.cshtml" />
     <Content Include="Views\Product\ShoppingBag.cshtml" />
     <Content Include="Views\Details\_PopularProducts.cshtml" />
+    <Content Include="Views\Checkout\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">
@@ -327,6 +328,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
