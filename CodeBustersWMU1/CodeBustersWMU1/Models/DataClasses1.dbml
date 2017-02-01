@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Database1ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Products" Member="Products">
     <Type Name="Product">
       <Column Name="Remaining" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -14,8 +14,21 @@
   <Table Name="dbo.Statistic" Member="Statistics">
     <Type Name="Statistic">
       <Column Name="ArticleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Sold" Type="System.Int32" DbType="Int NOT NULL" IsReadOnly="true" CanBeNull="false" UpdateCheck="Always" />
+      <Column Name="Sold" Type="System.Int32" DbType="Int NOT NULL" IsReadOnly="true" CanBeNull="false" />
       <Association Name="Product_Statistic" Member="Product" ThisKey="ArticleID" OtherKey="ArticleId" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Order]" Member="Orders">
+    <Type Name="Order">
+      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SurName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SocialSecurityNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Adress" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="PostalCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
