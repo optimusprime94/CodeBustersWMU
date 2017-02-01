@@ -1,4 +1,5 @@
-﻿@model CodeBustersWMU1.Models.ShoppingCart
+﻿@model CodeBustersWMU1.Models.Product
+@*@model IEnumerable<CodeBustersWMU1.Models.*@
 
 @{
     ViewBag.Title = "Checkout";
@@ -58,8 +59,10 @@
             @Html.Label("Telefon nr")
             <br />
             @Html.TextBox("Förnamn")
-
         </div>
+        <br />
+        <a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("Checkout", "Checkout")">Betala</a>
+
 </fieldset>
 
 }

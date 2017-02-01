@@ -14,6 +14,9 @@
             @Html.Label("Artikel Id")
         </th>
         <th>
+            @Html.Label("Artikel")
+        </th>
+        <th>
             @Html.Label("Pris/st")
         </th>
         <th>
@@ -32,6 +35,9 @@
             <tr>
                 <th>
                     @item.Item.ArticleId
+                </th>
+                <th>
+                    @Html.ActionLink(@item.Item.ArticleName,"Details","Details", new {id = @item.Item.ArticleId }, null)
                 </th>
                 <th>
                     @item.Item.Price.ToString("C")

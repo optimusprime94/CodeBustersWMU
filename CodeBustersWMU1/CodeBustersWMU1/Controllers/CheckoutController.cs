@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeBustersWMU1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,12 @@ namespace CodeBustersWMU1.Controllers
 {
     public class CheckoutController : Controller
     {
+
+        DataClasses1DataContext db = new DataClasses1DataContext();
         // GET: Checkout
         public ActionResult Index()
         {
+           
             return View();
         }
 
@@ -33,6 +37,7 @@ namespace CodeBustersWMU1.Controllers
             try
             {
                 // TODO: Add insert logic here
+                
 
                 return RedirectToAction("Index");
             }
