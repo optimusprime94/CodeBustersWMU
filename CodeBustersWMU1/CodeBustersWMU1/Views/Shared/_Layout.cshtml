@@ -35,20 +35,26 @@
                         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     </ul>
 
-                    @* Search form *@
-                    <form class="navbar-form navbar-right" onsubmit="@Html.Action("SearchDetails", "Search")" role="search">
+                    @*@* Search form *@
+                    @*<form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sök">
+                            <input type="text" class="form-control" placeholder="Sök" name="search">
                         </div>
                         <button type="submit" class="btn btn-success">Sök</button>
                     </form>
 
+@{
+    if (IsPost)
+    {
+        string search = Request.Form["search"];
+        @search
+    }*@*@
                     @Html.Partial("_LoginPartial")
                     
                 </div>
             </div>
         </div>
-    @Html.Partial("_Popular")
+    @*@Html.Partial("_Popular")*@
         <div class="container body-content">
             @RenderBody()
             <hr />
