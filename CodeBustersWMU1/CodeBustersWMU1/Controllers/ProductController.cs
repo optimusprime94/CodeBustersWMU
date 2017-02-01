@@ -61,7 +61,7 @@ namespace CodeBustersWMU1.Controllers
             ShoppingCart cartItem = new ShoppingCart(); 
 
                 cartItem.Item = product.First();
-                cartItem.Quantity = 1;
+                //cartItem.Quantity = 1;
 
                 // adds the cartItem to the list of shopping items.
                 cartList.Add(cartItem);

@@ -8,7 +8,7 @@
 
 @* Table to display the article information, this first part is the description of the table contents. *@
 
-<table class="table">
+<table class="table" style="border:thin">
     <tr>
         <th>
             @Html.Label("Artikel Id")
@@ -34,7 +34,7 @@
                     @item.Item.ArticleId
                 </th>
                 <th>
-                    @item.Item.Price
+                    @item.Item.Price.ToString("C")
                 </th>
                 <th>
                     @item.Quantity
@@ -54,5 +54,15 @@
 
 </table>
 
-<label>@total.ToString("C")</label>
-<label><a href="@Url.Action("Checkout", "Checkout")">Checkout</a></label>
+<br />
+<br />
+
+<h3><strong>@total.ToString("C")</strong></h3>
+
+@* TO DO: if list is empty don't proceed!!! *@
+
+<br />
+<br />
+
+<a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("Checkout", "Checkout")">Checkout</a>
+

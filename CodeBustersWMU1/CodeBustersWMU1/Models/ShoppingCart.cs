@@ -8,15 +8,30 @@ namespace CodeBustersWMU1.Models
     public class ShoppingCart
     {
         private int _quantity = 1;
+        DataClasses1DataContext db = new DataClasses1DataContext();
         public Product Item { get; set; }
-        public int Quantity {
-            get {
+        public int Quantity
+        {
+            get
+            {
                 return this._quantity;
             }
-            set {
-                if (value >= 0) { 
-                this._quantity = value;
+            set
+            {
+                //Check with database what the item supply is first!
+                var remaining =
+                from p in db.Products
+                where p.ArticleId == Item.ArticleId
+                 select p.Remaining;
+
+               int whatRemains = remaining.First();
+
+
+                if(whatRemains - (value) > 0)
+                {
+                    this._quantity = value;
                 }
+
             }
         }
     }
