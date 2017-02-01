@@ -58,15 +58,21 @@ namespace CodeBustersWMU1.Controllers
                 select p;
 
             // Cart Item: so we can put the product inside of it.
-            ShoppingCart cartItem = new ShoppingCart(); 
+            ShoppingCart cartItem = new ShoppingCart();
+
 
                 cartItem.Item = product.First();
-                //cartItem.Quantity = 1;
+            //cartItem.Quantity = 1;
 
-                // adds the cartItem to the list of shopping items.
+            // adds the cartItem to the list of shopping items.
+            if (cartItem.Item.Remaining > 0) {
                 cartList.Add(cartItem);
-                // Go back to the main store page for more shopping
-                return RedirectToAction("ShoppingBag");
+            }
+
+
+
+            // Go back to the main store page for more shopping
+            return RedirectToAction("ShoppingBag");
             
 
         }

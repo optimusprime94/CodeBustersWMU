@@ -27,7 +27,7 @@ namespace CodeBustersWMU1.Models
                int whatRemains = remaining.First();
 
 
-                if(whatRemains - (value) > 0)
+                if(whatRemains - (value) >= 0)
                 {
                     this._quantity = value;
                 }
