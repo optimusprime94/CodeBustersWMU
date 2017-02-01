@@ -33,6 +33,15 @@
                         <li>@Html.ActionLink("Om oss", "About", "Home")</li>
                         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     </ul>
+
+                    @* Search form *@
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sök">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sök</button>
+                    </form>
+
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>
