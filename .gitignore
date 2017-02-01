@@ -263,3 +263,4 @@ paket-files/
 /CodeBustersWMU1/CodeBustersWMU1/Models/Order.cs
 /CodeBustersWMU1/CodeBustersWMU1/Controllers/ShoppingCartController.cs
 /CodeBustersWMU1/CodeBustersWMU1/Models/Cart.cs
+/CodeBustersWMU1/CodeBustersWMU1/Controllers/CheckoutController.cs
