@@ -23,7 +23,7 @@
       <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="SurName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SocialSecurityNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SocialSecurityNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Adress" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
       <Column Name="PostalCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />

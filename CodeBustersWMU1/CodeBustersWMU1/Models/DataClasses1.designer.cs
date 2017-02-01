@@ -325,7 +325,7 @@ namespace CodeBustersWMU1.Models
 		
 		private string _SurName;
 		
-		private System.Nullable<int> _SocialSecurityNumber;
+		private System.Nullable<long> _SocialSecurityNumber;
 		
 		private string _Adress;
 		
@@ -347,7 +347,7 @@ namespace CodeBustersWMU1.Models
     partial void OnFirstNameChanged();
     partial void OnSurNameChanging(string value);
     partial void OnSurNameChanged();
-    partial void OnSocialSecurityNumberChanging(System.Nullable<int> value);
+    partial void OnSocialSecurityNumberChanging(System.Nullable<long> value);
     partial void OnSocialSecurityNumberChanged();
     partial void OnAdressChanging(string value);
     partial void OnAdressChanged();
@@ -426,8 +426,8 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="Int")]
-		public System.Nullable<int> SocialSecurityNumber
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
+		public System.Nullable<long> SocialSecurityNumber
 		{
 			get
 			{
