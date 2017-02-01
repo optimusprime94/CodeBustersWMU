@@ -1,4 +1,65 @@
-﻿@{
+﻿@model CodeBustersWMU1.Models.ShoppingCart
+
+@{
     ViewBag.Title = "Checkout";
 }
 <h1>Checkout - Snart är dem dina!</h1>
+
+@using (Html.BeginForm())
+{
+    <strong><h3>Order ID: 345462</h3></strong>
+
+    <fieldset>
+        <div class="editor-label">
+            @*@Html.LabelFor(model -> model.CustomerName) // borde vara så här hämta från tabellen*@
+
+
+            @Html.Label("Förnamn")
+            <br />
+            @Html.TextBox("Förnamn")
+            </div>
+        <div class="editor-label">
+            
+            @Html.Label("Efternamn")
+            <br />
+            @Html.TextBox("Förnamn")
+        </div>
+        <div class="editor-label">
+            @Html.Label("Personnr")
+            <br />
+            @Html.TextBox("Förnamn")
+            <br />
+        </div>
+        <div class="editor-label">
+            @Html.Label("Postadress")
+            <br />
+            @Html.TextBox("Förnamn")
+            <br />
+        </div>
+        <div class="editor-label">
+            @Html.Label("Postnr")
+            <br />
+            @Html.TextBox("Förnamn")
+            <br />
+        </div>
+        <div class="editor-label">
+            @Html.Label("Ort")
+            <br />
+            @Html.TextBox("Förnamn")
+            <br />
+        </div>
+        <div class="editor-label">
+            @Html.Label("E-post")
+            <br />
+            @Html.TextBox("Förnamn")
+            
+        </div>
+        <div class="editor-label">
+            @Html.Label("Telefon nr")
+            <br />
+            @Html.TextBox("Förnamn")
+
+        </div>
+</fieldset>
+
+}
