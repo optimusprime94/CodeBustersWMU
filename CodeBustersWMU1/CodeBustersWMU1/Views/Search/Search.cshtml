@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CodeBustersWMU1.Models.Order>
+    @using CodeBustersWMU1.Models
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SocialSecurityNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+       // Order order = (CodeBustersWMU1.Models.Order)@TempData["Order"];
+        
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SocialSecurityNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+
+        </tr>
+    }
+
+</table>
