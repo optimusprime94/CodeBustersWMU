@@ -14,7 +14,7 @@ namespace CodeBustersWMU1.Controllers
         public ActionResult Search(FormCollection collection)
         {
             DataClasses1DataContext db = new DataClasses1DataContext();
-
+            // working like a charm.
             int id = Convert.ToInt32(collection["OrderId"]);
             var product =
             from o in db.Orders
