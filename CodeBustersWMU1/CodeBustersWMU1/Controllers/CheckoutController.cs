@@ -25,6 +25,7 @@ namespace CodeBustersWMU1.Controllers
         }
 
         // GET: Checkout/Checkout
+        [HttpGet]
         public ActionResult Checkout()
         {
             return View();
@@ -32,7 +33,7 @@ namespace CodeBustersWMU1.Controllers
 
         // POST: Checkout/Checkout
         [HttpPost]
-        public ActionResult Checkout(FormCollection collection)
+        public ActionResult CheckoutOut(FormCollection collection)
         {
 
             var order = new Order();
@@ -48,6 +49,8 @@ namespace CodeBustersWMU1.Controllers
                 order.City = collection["Ortbox"];
                 order.Email = collection["Epostbox"];
                 order.Phone = Convert.ToInt32(collection["Telenrbox"]);
+                Console.WriteLine(order.FirstName);
+                db.SubmitChanges();
                 return RedirectToAction("Index");
             }
             catch

@@ -9,10 +9,12 @@ namespace CodeBustersWMU1.Controllers
 {
     public class SearchController : Controller
     {
-        DataClasses1DataContext db = new DataClasses1DataContext();
+        
         // GET: Search
         public ActionResult Search(int id)
         {
+            DataClasses1DataContext db = new DataClasses1DataContext();
+
             id = 1;
             var product =
             from o in db.Orders
