@@ -6,12 +6,13 @@
 }
 <h1>Checkout - Snart är dem dina!</h1>
 
-@using (Html.BeginForm())
+@using (Ajax.BeginForm("CheckoutOut", "Checkout",
+     new AjaxOptions { UpdateTargetId = "checkoutdetails" }))
 {
     <strong><h3>Order ID: 345462</h3></strong>
 
     <fieldset>
-        <div class="editor-label">
+        <div id="checkoutdetails">
             @*@Html.LabelFor(model -> model.CustomerName) // borde vara så här hämta från tabellen*@
 
 
@@ -61,7 +62,8 @@
             @Html.TextBox("TeleNrbox")
         </div>
         <br />
-        <a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("Checkout", "Checkout")">Betala</a>
+        <button>Betala</button>
+        @*<a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("Checkout", "Checkout")">Betala</a>*@
 
 </fieldset>
 
