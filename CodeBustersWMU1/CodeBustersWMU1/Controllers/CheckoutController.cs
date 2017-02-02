@@ -34,11 +34,20 @@ namespace CodeBustersWMU1.Controllers
         [HttpPost]
         public ActionResult Checkout(FormCollection collection)
         {
+
+            var order = new Order();
             try
             {
                 // TODO: Add insert logic here
-                
-
+                order.OrderId = 2;
+                order.FirstName = collection["Förnamnbox"];
+                order.SurName = collection["Efternamnbox"];
+                order.SocialSecurityNumber = Convert.ToInt64(collection["Personnrbox"]);
+                order.Adress = collection["Adressbox"];
+                order.PostalCode = Convert.ToInt32(collection["Postnrbox"]);
+                order.City = collection["Ortbox"];
+                order.Email = collection["Epostbox"];
+                order.Phone = Convert.ToInt32(collection["Telenrbox"]);
                 return RedirectToAction("Index");
             }
             catch

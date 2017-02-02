@@ -21,9 +21,8 @@ namespace CodeBustersWMU1.Controllers
             where o.OrderId == id
             select o;
 
-            
-            //TempData["Order"] = product.First();
 
+            //TempData["Order"] = product.First();
             return View(product.ToList());
         }
     }
