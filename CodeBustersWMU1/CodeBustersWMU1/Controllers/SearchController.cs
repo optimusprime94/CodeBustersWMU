@@ -10,10 +10,13 @@ namespace CodeBustersWMU1.Controllers
     public class SearchController : Controller
     {
         DataClasses1DataContext db = new DataClasses1DataContext();
+
+        [HttpPost]
         // GET: Search
-        public ActionResult Search(int id)
+        public ActionResult Search(FormCollection fc)
         {
-            id = 1;
+            int id = fc.Get("OrderID").ToInt();
+            
             var product =
             from o in db.Orders
             where o.OrderId == id

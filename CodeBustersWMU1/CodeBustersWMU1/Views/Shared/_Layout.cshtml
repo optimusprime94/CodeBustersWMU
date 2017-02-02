@@ -36,21 +36,15 @@
                     </ul>
 
                     @* Search form *@
-                    <form class="navbar-form navbar-right" role="search" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sök" name="search">
-                        </div>
-                        <button type="submit" class="btn btn-success">Sök</button>
-                    </form>
+                    
+                    @using (Html.BeginForm("Search", "Search")) {
+                    <p>@Html.TextBox("OrderID")
+                    
+                    <input type="submit" value="Sök" />
+                    </p>
+                    
+                    }
 
-@{
-    if (IsPost)
-    {
-        string search = Request.Form["search"];
-        int id = search.AsInt();
-        @Html.Action("Search", "Search", new { id = 1 })
-    }
-}
                     @Html.Partial("_LoginPartial")
                     
                 </div>
