@@ -38,6 +38,21 @@
 
 
                     @* Search form *@
+@using (Ajax.BeginForm("Search", "Search",
+                             new AjaxOptions { UpdateTargetId = "OrderID" }, new { @class = "navbar-form navbar-right" }))
+{
+    <p>
+        @Html.TextBox("OrderID", this, new { @class = "form-control" })
+
+        <input  class="btn btn-success" type="submit" value="Sök" />
+    </p>
+}
+                    @*<form class="navbar-form navbar-right" role="search" method="post" id="search_form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sök" name="search">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sök</button>
+                    </form>*@
 
 
 

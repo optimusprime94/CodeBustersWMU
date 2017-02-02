@@ -11,11 +11,11 @@ namespace CodeBustersWMU1.Controllers
     {
         
         // GET: Search
-        public ActionResult Search(int id)
+        public ActionResult Search(FormCollection collection)
         {
             DataClasses1DataContext db = new DataClasses1DataContext();
 
-            id = 1;
+            int id = Convert.ToInt32(collection["OrderId"]);
             var product =
             from o in db.Orders
             where o.OrderId == id
