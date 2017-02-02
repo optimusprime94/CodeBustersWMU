@@ -38,21 +38,9 @@
 
 
                     @* Search form *@
-                    <form class="navbar-form navbar-right" role="search" method="post" id="search_form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sök" name="search">
-                        </div>
-                        <button type="submit" class="btn btn-success">Sök</button>
-                    </form>
-                    <script> document.getElementById("search_form").reset(); </script>
-@{
-    if (IsPost)
-    {
-        string search = Request.Form["search"];
-        int searchID = search.AsInt();
-        @Html.Action("Search", "Search", new { id = searchID })
-    }
-}
+
+
+
                     @Html.Partial("_LoginPartial")
                     
                 </div>
