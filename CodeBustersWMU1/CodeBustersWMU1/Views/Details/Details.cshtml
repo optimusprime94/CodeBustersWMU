@@ -1,9 +1,10 @@
 ﻿@using CodeBustersWMU1.Models;
-@model CodeBustersWMU1.Models.Product
+@model IEnumerable<CodeBustersWMU1.Models.Product>
 @{
     ViewBag.Title = "Details";
 }
 
+@Html.Partial("_ProductSuggestion", Model)
 
 
 <div class="jumbotron" style="background-color:rgba(226, 226, 226, 0.70)">

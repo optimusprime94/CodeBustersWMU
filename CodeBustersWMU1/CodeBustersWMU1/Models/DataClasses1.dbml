@@ -20,7 +20,7 @@
   </Table>
   <Table Name="dbo.[Order]" Member="Orders">
     <Type Name="Order">
-      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="SurName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SocialSecurityNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />

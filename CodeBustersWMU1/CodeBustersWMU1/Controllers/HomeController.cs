@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeBustersWMU1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,8 @@ namespace CodeBustersWMU1.Controllers
         //GET: Home/Index
         public ActionResult Index()
         {
-            return View();
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            return View(db.Products.ToList());
         }
 
         public ActionResult About()

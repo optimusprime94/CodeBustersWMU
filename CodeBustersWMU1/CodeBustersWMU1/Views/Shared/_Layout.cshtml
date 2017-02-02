@@ -35,8 +35,8 @@
                         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     </ul>
 
-                    @*@* Search form *@
-                    @*<form class="navbar-form navbar-right" role="search">
+                    @* Search form *@
+                    <form class="navbar-form navbar-right" role="search" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Sök" name="search">
                         </div>
@@ -47,14 +47,16 @@
     if (IsPost)
     {
         string search = Request.Form["search"];
-        @search
-    }*@*@
+        int id = search.AsInt();
+        @Html.Action("Search", "Search", new { id = 1 })
+    }
+}
                     @Html.Partial("_LoginPartial")
                     
                 </div>
             </div>
         </div>
-    @*@Html.Partial("_Popular")*@
+
         <div class="container body-content">
             @RenderBody()
             <hr />

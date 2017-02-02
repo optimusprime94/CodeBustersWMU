@@ -34,7 +34,7 @@ namespace CodeBustersWMU1.Controllers
                     break;
                 }
             }
-            return View();
+            return View(db.Products.ToList());
         }
 
 

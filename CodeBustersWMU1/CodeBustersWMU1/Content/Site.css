@@ -42,15 +42,56 @@ div#frontPageBlocks > div.col-md-4 > a{
     display: block;
     background-size: 100% 100%;
 }
-/*
-div#frontPageBlocks > div.col-md-4:nth-child(1){
 
+div#productSuggestion{
+    width: 100%;
+    height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 1%;
 }
 
-div#frontPageBlocks > div.col-md-4:nth-child(2) {
-    
+div#productSuggestionContainer{
+    height: 100%;
+    width: 2000px;
 }
 
-div#frontPageBlocks > div.col-md-4:nth-child(1){
-    
-}*/
+div.productSuggestionImageContainer{
+    height: 100%;
+    float: left;
+}
+
+img.productSuggestionImage{
+    height: 90%;
+}
+
+div.productSuggestionImageContainer > p{
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgb(0, 0, 0); 
+}

@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -306,8 +307,9 @@
     <Content Include="Views\Product\Products.cshtml" />
     <Content Include="Views\Details\Details.cshtml" />
     <Content Include="Views\Product\ShoppingBag.cshtml" />
-    <Content Include="Views\Details\_PopularProducts.cshtml" />
     <Content Include="Views\Checkout\Checkout.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Shared\_ProductSuggestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">

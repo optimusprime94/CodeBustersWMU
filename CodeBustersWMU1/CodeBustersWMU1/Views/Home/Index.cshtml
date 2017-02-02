@@ -1,9 +1,9 @@
-﻿@{
+﻿@model IEnumerable<CodeBustersWMU1.Models.Product>
+@{
     ViewBag.Title = "Home Page";
 }
 
-
-
+@Html.Partial("_ProductSuggestion", Model)
 
 <div class="row" id="frontPageBlocks">
 
