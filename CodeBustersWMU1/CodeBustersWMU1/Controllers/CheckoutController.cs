@@ -35,15 +35,26 @@ namespace CodeBustersWMU1.Controllers
         [HttpPost]
         public ActionResult CheckoutOut(FormCollection collection)
         {
-
+            //int aID = 0;
+            //int quantity, i;
+            //i = 0;
+            //quantity = 0;
+            //  aID = new int[10];
             var id = db.Orders.Select(q => q.OrderId).Max();
-            //from o in db.Orders
-            //select o.OrderId;
+         
             int idOrder = Convert.ToInt16(id);
+
+            //List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+            //foreach (var item in cartList)
+            //{
+            //    aID = item.Item.ArticleId;
+            //    quantity = item.Quantity;
+            //    i++;
+            //}
 
             Order order = new Models.Order
             {
-                OrderId = (idOrder+1),
+                OrderId = (idOrder + 1),
                 FirstName = collection["Förnamnbox"],
                 SurName = collection["Efternamnbox"],
                 SocialSecurityNumber = Convert.ToInt64(collection["Personnrbox"]),
@@ -52,26 +63,21 @@ namespace CodeBustersWMU1.Controllers
                 City = collection["Ortbox"],
                 Email = collection["Epostbox"],
                 Phone = Convert.ToInt32(collection["Telenrbox"]),
-            };
 
+            };
+            //OrderDetail detail = new Models.OrderDetail
+            //{
+            //    ArtikcleID = aID,
+            //    OrderID = idOrder,
+            //    Amount = quantity
+            //};
             db.Orders.InsertOnSubmit(order);
+           // db.OrderDetails.InsertOnSubmit(detail);
             try
             {
                 // TODO: Add insert logic here
-                //   order.OrderId = 2;
-                //order.
-                //string FirstName = collection["Förnamnbox"];
-                //string SurName = collection["Efternamnbox"];
-                //Int64 SocialSecurityNumber = Convert.ToInt64(collection["Personnrbox"]);
-                //string Adress = collection["Postadressbox"];
-                //int PostalCode = Convert.ToInt32(collection["Postnrbox"]);
-                //string City = collection["Ortbox"];
-                //string Email = collection["Epostbox"];
-                //int Phone = Convert.ToInt32(collection["Telenrbox"]);
-
-
                 db.SubmitChanges();
-               
+
                 return RedirectToAction("Checkout");
             }
             catch
@@ -79,53 +85,66 @@ namespace CodeBustersWMU1.Controllers
                 return View();
             }
         }
-        public ActionResult CheckoutComplete()
-        {
+        public ActionResult AddCartToOrder()
+{
 
-            return View();
-        }
-        // GET: Checkout/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //    List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+        //    foreach (var item in cartList)
+        //    {
 
-        // POST: Checkout/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //        aID = item.Item.ArticleId;
+        //        quantity = item.Quantity;
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+    //}
+    return View();
+}
+public ActionResult CheckoutComplete()
+{
 
-        // GET: Checkout/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+    return View();
+}
+// GET: Checkout/Edit/5
+public ActionResult Edit(int id)
+{
+    return View();
+}
 
-        // POST: Checkout/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+// POST: Checkout/Edit/5
+[HttpPost]
+public ActionResult Edit(int id, FormCollection collection)
+{
+    try
+    {
+        // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        return RedirectToAction("Index");
+    }
+    catch
+    {
+        return View();
+    }
+}
+
+// GET: Checkout/Delete/5
+public ActionResult Delete(int id)
+{
+    return View();
+}
+
+// POST: Checkout/Delete/5
+[HttpPost]
+public ActionResult Delete(int id, FormCollection collection)
+{
+    try
+    {
+        // TODO: Add delete logic here
+
+        return RedirectToAction("Index");
+    }
+    catch
+    {
+        return View();
+    }
+}
     }
 }

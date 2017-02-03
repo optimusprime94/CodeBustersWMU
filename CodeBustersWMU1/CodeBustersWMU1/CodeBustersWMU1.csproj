@@ -311,6 +311,7 @@
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_ProductSuggestion.cshtml" />
     <Content Include="Views\Search\SearchNotFound.cshtml" />
+    <Content Include="Views\Checkout\CheckoutComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">
