@@ -28,16 +28,18 @@
 
     @{
         int total = 0;
-        List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
-        foreach (var item in cartList)
+        if (Session["Cart"] != null)
         {
+            List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+            foreach (var item in cartList)
+            {
 
             <tr>
                 <th>
                     @item.Item.ArticleId
                 </th>
                 <th>
-                    @Html.ActionLink(@item.Item.ArticleName,"Details","Details", new {id = @item.Item.ArticleId }, null)
+                    @Html.ActionLink(@item.Item.ArticleName, "Details", "Details", new { id = @item.Item.ArticleId }, null)
                 </th>
                 <th>
                     @item.Item.Price.ToString("C")
@@ -51,12 +53,13 @@
                 </th>
             </tr>
 
-                            total += (@item.Item.Price * @item.Quantity);
+                    total += (@item.Item.Price * @item.Quantity);
 
 
 
-                        }
-    }
+                }
+            }
+        }
 
 </table>
 
