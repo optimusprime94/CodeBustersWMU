@@ -23,8 +23,10 @@ namespace CodeBustersWMU1.Controllers
                     where o.OrderId == id
                     select o;
 
-
-                //TempData["Order"] = product.First();
+                if (product.Count() == 0)
+                {
+                    throw new Exception();
+                }
                 return View(product.ToList());
 
             }

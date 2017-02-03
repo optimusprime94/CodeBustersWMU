@@ -39,15 +39,17 @@
                 @Html.Partial("_LoginPartial")
 
                 @* Search form *@
-                @using (Ajax.BeginForm("Search", "Search",
-                                 new AjaxOptions { UpdateTargetId = "OrderID" }))
-                {
+
                     <form class="navbar-form navbar-right" role="search" method="post">
                         <div class="form-group">
-                            @Html.TextBox("OrderID", null, new { @class = "form-control" })
+                            @using (Ajax.BeginForm("Search", "Search",
+                                new AjaxOptions { UpdateTargetId = "OrderID" }))
+                            {
+                            @Html.TextBox("OrderID", null, new {@class = "form-control"})
+                            }
                         </div>
                     </form>
-                }
+                
                 </div>
             </div>
         </div>
