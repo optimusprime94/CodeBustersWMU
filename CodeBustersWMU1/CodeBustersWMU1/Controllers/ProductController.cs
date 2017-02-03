@@ -33,7 +33,6 @@ namespace CodeBustersWMU1.Controllers
             {
                 //Session["Cart"] = new List<ShoppingCart>();
                 return 0;
-
             }
             List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"]; // we get the shoppinglist
             int i = 0;
@@ -41,7 +40,24 @@ namespace CodeBustersWMU1.Controllers
                 i += item.Quantity;
             }
             return i;
+        }
 
+        public int GetTotalPrice()
+        {
+            var session = HttpContext.Session;
+
+            if (session["Cart"] == null)
+            {
+                //Session["Cart"] = new List<ShoppingCart>();
+                return 0;
+            }
+            List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"]; // we get the shoppinglist
+            int i = 0;
+            foreach (var item in cartList)
+            {
+                i += (item.Quantity*item.Item.Price);
+            }
+            return i;
         }
 
 
@@ -54,7 +70,6 @@ namespace CodeBustersWMU1.Controllers
             if (session["Cart"] == null)
             {
                 Session["Cart"] = new List<ShoppingCart>();
-                
             }
 
             List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"]; // we get the shoppinglist

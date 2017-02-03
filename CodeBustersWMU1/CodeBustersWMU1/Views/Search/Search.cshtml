@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<CodeBustersWMU1.Models.Order>
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Order sökning";
 }
 
-<h2>Search</h2>
+<h2>@ViewBag.Title</h2>
 
 <table class="table">
     <tr>
@@ -35,10 +35,6 @@
         <th></th>
     </tr>
 
-    @{
-       // Order order = (CodeBustersWMU1.Models.Order)@TempData["Order"];
-        
-    }
 
     @foreach (var item in Model)
     {

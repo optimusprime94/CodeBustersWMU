@@ -1,96 +1,98 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
 div#frontPageBlocks{
-    margin: 0;
-    width: 100%;
+	margin: 0;
+	width: 100%;
 }
 
 div#frontPageBlocks > div.col-md-4{
-    padding: 0;
-    margin: 0;
-    width: 33.3333333%;
-    background-color: transparent;
+	padding: 0;
+	margin: 0;
+	width: 33.3333333%;
+	background-color: transparent;
 
 }
 
 div#frontPageBlocks > div.col-md-4 > a{
-    width: 100%;
-    height: 600px;
-    display: block;
-    background-size: 100% 100%;
+	width: 100%;
+	height: 600px;
+	display: block;
+	background-size: 100% 100%;
 }
 
 div#productSuggestion{
-    width: 100%;
-    height: 400px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    padding: 1%;
+	width: 100%;
+	height: 400px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding: 1%;
 }
 
 div#productSuggestionContainer{
-    height: 100%;
-    width: 2000px;
+	height: 80%;
+	width: 2000px;
 }
 
 div.productSuggestionImageContainer{
-    height: 100%;
-    float: left;
+	height: 100%;
+	float: left;
 }
 
 img.productSuggestionImage{
-    height: 90%;
+	height: 90%;
 }
 
 div.productSuggestionImageContainer > p{
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
 }
 
 
 /* Let's get this party started */
 ::-webkit-scrollbar {
-    width: 12px;
+	width: 12px;
 }
  
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.3); 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+		/* background: #2780e3; */
+
+	background:gainsboro; 
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgb(0, 0, 0); 

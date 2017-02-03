@@ -14,16 +14,29 @@ namespace CodeBustersWMU1.Controllers
         public ActionResult Search(FormCollection collection)
         {
             DataClasses1DataContext db = new DataClasses1DataContext();
-            // working like a charm.
-            int id = Convert.ToInt32(collection["OrderId"]);
-            var product =
-            from o in db.Orders
-            where o.OrderId == id
-            select o;
+            try
+            {
+                // working like a charm.
+                int id = Convert.ToInt32(collection["OrderId"]);
+                var product =
+                    from o in db.Orders
+                    where o.OrderId == id
+                    select o;
 
 
-            //TempData["Order"] = product.First();
-            return View(product.ToList());
+                //TempData["Order"] = product.First();
+                return View(product.ToList());
+
+            }
+            catch
+            {
+                return RedirectToAction("SearchNotFound");
+            }
+        }
+
+        public ActionResult SearchNotFound()
+        {
+            return View();
         }
     }
 }
