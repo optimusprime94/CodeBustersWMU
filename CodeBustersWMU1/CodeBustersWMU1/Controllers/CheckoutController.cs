@@ -71,7 +71,7 @@ namespace CodeBustersWMU1.Controllers
 
 
                 db.SubmitChanges();
-                // FUNKAR EJ SOM VI VILL db.SubmitChanges();
+               
                 return RedirectToAction("Checkout");
             }
             catch
@@ -79,7 +79,11 @@ namespace CodeBustersWMU1.Controllers
                 return View();
             }
         }
+        public ActionResult CheckoutComplete()
+        {
 
+            return View();
+        }
         // GET: Checkout/Edit/5
         public ActionResult Edit(int id)
         {
