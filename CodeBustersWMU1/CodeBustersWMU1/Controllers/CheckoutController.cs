@@ -14,7 +14,7 @@ namespace CodeBustersWMU1.Controllers
         // GET: Checkout
         public ActionResult Index()
         {
-           
+
             return View();
         }
 
@@ -36,22 +36,43 @@ namespace CodeBustersWMU1.Controllers
         public ActionResult CheckoutOut(FormCollection collection)
         {
 
-            var order = new Order();
+            var id = db.Orders.Select(q => q.OrderId).Max();
+            //from o in db.Orders
+            //select o.OrderId;
+            int idOrder = Convert.ToInt16(id);
+
+            Order order = new Models.Order
+            {
+                OrderId = (idOrder+1),
+                FirstName = collection["Förnamnbox"],
+                SurName = collection["Efternamnbox"],
+                SocialSecurityNumber = Convert.ToInt64(collection["Personnrbox"]),
+                Adress = collection["Postadressbox"],
+                PostalCode = Convert.ToInt32(collection["Postnrbox"]),
+                City = collection["Ortbox"],
+                Email = collection["Epostbox"],
+                Phone = Convert.ToInt32(collection["Telenrbox"]),
+            };
+
+            db.Orders.InsertOnSubmit(order);
             try
             {
                 // TODO: Add insert logic here
-                order.OrderId = 2;
-                order.FirstName = collection["Förnamnbox"];
-                order.SurName = collection["Efternamnbox"];
-                order.SocialSecurityNumber = Convert.ToInt64(collection["Personnrbox"]);
-                order.Adress = collection["Adressbox"];
-                order.PostalCode = Convert.ToInt32(collection["Postnrbox"]);
-                order.City = collection["Ortbox"];
-                order.Email = collection["Epostbox"];
-                order.Phone = Convert.ToInt32(collection["Telenrbox"]);
-                Console.WriteLine(order.FirstName);
+                //   order.OrderId = 2;
+                //order.
+                //string FirstName = collection["Förnamnbox"];
+                //string SurName = collection["Efternamnbox"];
+                //Int64 SocialSecurityNumber = Convert.ToInt64(collection["Personnrbox"]);
+                //string Adress = collection["Postadressbox"];
+                //int PostalCode = Convert.ToInt32(collection["Postnrbox"]);
+                //string City = collection["Ortbox"];
+                //string Email = collection["Epostbox"];
+                //int Phone = Convert.ToInt32(collection["Telenrbox"]);
+
+
                 db.SubmitChanges();
-                return RedirectToAction("Index");
+                // FUNKAR EJ SOM VI VILL db.SubmitChanges();
+                return RedirectToAction("Checkout");
             }
             catch
             {
