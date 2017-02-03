@@ -26,9 +26,28 @@ namespace CodeBustersWMU1.Controllers
             return View();
         }
 
+        public int GetCartSize() {
+            var session = HttpContext.Session;
 
-        public ActionResult AddToCart(int id)
-        {
+            if (session["Cart"] == null)
+            {
+                //Session["Cart"] = new List<ShoppingCart>();
+                return 0;
+
+            }
+            List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"]; // we get the shoppinglist
+            int i = 0;
+            foreach (var item in cartList) {
+                i += item.Quantity;
+            }
+            return i;
+
+        }
+
+
+        public ActionResult AddToCart(int id) { 
+        
+
             var session = HttpContext.Session;
             
             // we need a shopping cart if we dont already have one.
