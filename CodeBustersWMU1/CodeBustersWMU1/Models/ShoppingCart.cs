@@ -8,7 +8,7 @@ namespace CodeBustersWMU1.Models
     public class ShoppingCart
     {
         private int _quantity = 1;
-        DataClasses1DataContext db = new DataClasses1DataContext();
+        private DataClasses1DataContext db = new DataClasses1DataContext();
         public Product Item { get; set; }
         public int Quantity
         {

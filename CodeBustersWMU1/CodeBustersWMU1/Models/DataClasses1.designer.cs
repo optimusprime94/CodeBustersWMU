@@ -385,7 +385,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
+		[DisplayName("Förnamn")] // displayed instead of "FirstName" when DisplayNameFor() is called.
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(20)")]
 		public string FirstName
 		{
@@ -405,7 +405,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
+		[DisplayName("Efternamn")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50)")]
 		public string SurName
 		{
@@ -425,7 +425,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
+		[DisplayName("Personnr")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
 		public System.Nullable<long> SocialSecurityNumber
 		{
@@ -445,7 +445,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
+		[DisplayName("Adress")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(80)")]
 		public string Adress
 		{
@@ -466,6 +466,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
+        [DisplayName("Post nr")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="Int")]
 		public System.Nullable<int> PostalCode
 		{
@@ -485,7 +486,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
+		[DisplayName("Stad")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
 		public string City
 		{
@@ -506,6 +507,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
+        [DisplayName("E-post")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(80)")]
 		public string Email
 		{
@@ -526,6 +528,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
+        [DisplayName("Telefon nr")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int")]
 		public System.Nullable<int> Phone
 		{
