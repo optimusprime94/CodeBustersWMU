@@ -1,4 +1,4 @@
-﻿@model CodeBustersWMU1.Models.Product
+﻿@model CodeBustersWMU1.Models.Order
 @*@model IEnumerable<CodeBustersWMU1.Models.*@
 
 @{
@@ -9,7 +9,8 @@
 @using (Ajax.BeginForm("CheckoutOut", "Checkout",
      new AjaxOptions { UpdateTargetId = "checkoutdetails" }))
 {
-    <strong><h3>Order ID: 345462</h3></strong>
+   
+    <strong><h3>Order ID: </h3></strong>
 
     <fieldset>
         <div id="checkoutdetails">
@@ -62,9 +63,8 @@
             @Html.TextBox("TeleNrbox")
         </div>
         <br />
-        <button>Betala</button>
-        @*<a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("Checkout", "Checkout")">Betala</a>*@
+        <a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("CheckoutComplete", "Checkout")">Betala</a>
+       
+    </fieldset>
 
-</fieldset>
-
-}
+    }
