@@ -264,11 +264,16 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Product\Images\004Charmander.png" />
     <Content Include="Views\Product\Images\025Pikachu.png" />
     <Content Include="Views\Product\Images\144Articuno.png" />
     <Content Include="Views\Product\Images\145Zapdos.png" />
     <Content Include="Views\Product\Images\146Moltres.png" />
     <Content Include="Views\Product\Images\150Mewtwo.png" />
+    <Content Include="Views\Product\Images\214Heracross.png" />
+    <Content Include="Views\Product\Images\470Leafeon.png" />
+    <Content Include="Views\Product\Images\478Froslass.png" />
+    <Content Include="Views\Product\Images\701Hawlucha.png" />
     <Content Include="Views\Product\Images\king.gif" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -311,6 +316,7 @@
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_ProductSuggestion.cshtml" />
     <Content Include="Views\Search\SearchNotFound.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">

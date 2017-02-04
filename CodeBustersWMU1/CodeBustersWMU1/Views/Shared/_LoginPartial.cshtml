@@ -16,11 +16,9 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.Action("GetCartSize", "Product")</li>
-        <li>@Html.ActionLink("Kundvagn", "ShoppingBag", "Product")</li>
-        <li>@Html.Action("GetTotalPrice", "Product") SEK</li>
+        <li>@Html.Partial("_ShoppingCart")</li>
 
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
     </ul>
 }

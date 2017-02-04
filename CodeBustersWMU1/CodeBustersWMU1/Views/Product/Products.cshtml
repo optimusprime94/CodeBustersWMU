@@ -38,8 +38,8 @@
     {
         <tr>
             <td>
-                @{  String path = "";
-                    path = @Html.DisplayFor(modelItem => item.Image).ToString();
+                @{  String path = "/Images/";
+                    path = path + @Html.DisplayFor(modelItem => item.Image);
                 }
                     <img src="@path" alt="bild" width="300" height="300" />
 
@@ -72,7 +72,7 @@
             </td>
             <td>
                 @{
-                    /* Visar olika typer av meddelanden beroende på antalet som finns kvar av varan */
+                    /* Different status message, depending on remaining quantity */
                     string message = "";
                     int remains = int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString());
                     if (remains == 0)
