@@ -36,6 +36,9 @@ namespace CodeBustersWMU1.Models
     partial void InsertOrder(Order instance);
     partial void UpdateOrder(Order instance);
     partial void DeleteOrder(Order instance);
+    partial void InsertOrderDetail(OrderDetail instance);
+    partial void UpdateOrderDetail(OrderDetail instance);
+    partial void DeleteOrderDetail(OrderDetail instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -91,6 +94,14 @@ namespace CodeBustersWMU1.Models
 				return this.GetTable<Order>();
 			}
 		}
+		
+		public System.Data.Linq.Table<OrderDetail> OrderDetails
+		{
+			get
+			{
+				return this.GetTable<OrderDetail>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
@@ -110,6 +121,8 @@ namespace CodeBustersWMU1.Models
 		private string _ArticleName;
 		
 		private int _ArticleId;
+		
+		private EntitySet<OrderDetail> _OrderDetails;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -131,6 +144,7 @@ namespace CodeBustersWMU1.Models
 		
 		public Product()
 		{
+			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
 			OnCreated();
 		}
 		
@@ -254,6 +268,19 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_OrderDetail", Storage="_OrderDetails", ThisKey="ArticleId", OtherKey="ArtikcleID")]
+		public EntitySet<OrderDetail> OrderDetails
+		{
+			get
+			{
+				return this._OrderDetails;
+			}
+			set
+			{
+				this._OrderDetails.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -272,6 +299,18 @@ namespace CodeBustersWMU1.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_OrderDetails(OrderDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_OrderDetails(OrderDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
 		}
 	}
 	
@@ -337,6 +376,8 @@ namespace CodeBustersWMU1.Models
 		
 		private System.Nullable<int> _Phone;
 		
+		private EntitySet<OrderDetail> _OrderDetails;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -363,6 +404,7 @@ namespace CodeBustersWMU1.Models
 		
 		public Order()
 		{
+			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
 			OnCreated();
 		}
 		
@@ -385,7 +427,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		[DisplayName("Förnamn")] // displayed instead of "FirstName" when DisplayNameFor() is called.
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(20)")]
 		public string FirstName
 		{
@@ -405,7 +447,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		[DisplayName("Efternamn")]
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50)")]
 		public string SurName
 		{
@@ -425,7 +467,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		[DisplayName("Personnr")]
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
 		public System.Nullable<long> SocialSecurityNumber
 		{
@@ -445,7 +487,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		[DisplayName("Adress")]
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(80)")]
 		public string Adress
 		{
@@ -466,7 +508,6 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-        [DisplayName("Post nr")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="Int")]
 		public System.Nullable<int> PostalCode
 		{
@@ -486,7 +527,7 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		[DisplayName("Stad")]
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
 		public string City
 		{
@@ -507,7 +548,6 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-        [DisplayName("E-post")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(80)")]
 		public string Email
 		{
@@ -528,7 +568,6 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 		
-        [DisplayName("Telefon nr")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int")]
 		public System.Nullable<int> Phone
 		{
@@ -545,6 +584,247 @@ namespace CodeBustersWMU1.Models
 					this._Phone = value;
 					this.SendPropertyChanged("Phone");
 					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Order_OrderDetail", Storage="_OrderDetails", ThisKey="OrderId", OtherKey="OrderID")]
+		public EntitySet<OrderDetail> OrderDetails
+		{
+			get
+			{
+				return this._OrderDetails;
+			}
+			set
+			{
+				this._OrderDetails.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_OrderDetails(OrderDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Order = this;
+		}
+		
+		private void detach_OrderDetails(OrderDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Order = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OrderDetails")]
+	public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OrderDetailsId;
+		
+		private System.Nullable<int> _OrderID;
+		
+		private System.Nullable<int> _ArtikcleID;
+		
+		private System.Nullable<int> _Amount;
+		
+		private EntityRef<Product> _Product;
+		
+		private EntityRef<Order> _Order;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOrderDetailsIdChanging(int value);
+    partial void OnOrderDetailsIdChanged();
+    partial void OnOrderIDChanging(System.Nullable<int> value);
+    partial void OnOrderIDChanged();
+    partial void OnArtikcleIDChanging(System.Nullable<int> value);
+    partial void OnArtikcleIDChanged();
+    partial void OnAmountChanging(System.Nullable<int> value);
+    partial void OnAmountChanged();
+    #endregion
+		
+		public OrderDetail()
+		{
+			this._Product = default(EntityRef<Product>);
+			this._Order = default(EntityRef<Order>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDetailsId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int OrderDetailsId
+		{
+			get
+			{
+				return this._OrderDetailsId;
+			}
+			set
+			{
+				if ((this._OrderDetailsId != value))
+				{
+					this.OnOrderDetailsIdChanging(value);
+					this.SendPropertyChanging();
+					this._OrderDetailsId = value;
+					this.SendPropertyChanged("OrderDetailsId");
+					this.OnOrderDetailsIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="Int")]
+		public System.Nullable<int> OrderID
+		{
+			get
+			{
+				return this._OrderID;
+			}
+			set
+			{
+				if ((this._OrderID != value))
+				{
+					if (this._Order.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnOrderIDChanging(value);
+					this.SendPropertyChanging();
+					this._OrderID = value;
+					this.SendPropertyChanged("OrderID");
+					this.OnOrderIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArtikcleID", DbType="Int")]
+		public System.Nullable<int> ArtikcleID
+		{
+			get
+			{
+				return this._ArtikcleID;
+			}
+			set
+			{
+				if ((this._ArtikcleID != value))
+				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnArtikcleIDChanging(value);
+					this.SendPropertyChanging();
+					this._ArtikcleID = value;
+					this.SendPropertyChanged("ArtikcleID");
+					this.OnArtikcleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int")]
+		public System.Nullable<int> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_OrderDetail", Storage="_Product", ThisKey="ArtikcleID", OtherKey="ArticleId", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.OrderDetails.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.OrderDetails.Add(this);
+						this._ArtikcleID = value.ArticleId;
+					}
+					else
+					{
+						this._ArtikcleID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Order_OrderDetail", Storage="_Order", ThisKey="OrderID", OtherKey="OrderId", IsForeignKey=true)]
+		public Order Order
+		{
+			get
+			{
+				return this._Order.Entity;
+			}
+			set
+			{
+				Order previousValue = this._Order.Entity;
+				if (((previousValue != value) 
+							|| (this._Order.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Order.Entity = null;
+						previousValue.OrderDetails.Remove(this);
+					}
+					this._Order.Entity = value;
+					if ((value != null))
+					{
+						value.OrderDetails.Add(this);
+						this._OrderID = value.OrderId;
+					}
+					else
+					{
+						this._OrderID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Order");
 				}
 			}
 		}

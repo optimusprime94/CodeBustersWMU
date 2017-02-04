@@ -79,7 +79,7 @@ namespace CodeBustersWMU1.Controllers
             {
                 if (item.Item.ArticleId == id)
                 {
-                    item.Quantity++;
+                    item.Quantity++;    
                     return RedirectToAction("ShoppingBag");
                 }
             }

@@ -9,6 +9,7 @@
       <Column Name="ArticleName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="ArticleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Association Name="Product_Statistic" Member="Statistics" ThisKey="ArticleId" OtherKey="ArticleID" Type="Statistic" Cardinality="One" />
+      <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ArticleId" OtherKey="ArtikcleID" Type="OrderDetail" />
     </Type>
   </Table>
   <Table Name="dbo.Statistic" Member="Statistics">
@@ -29,6 +30,17 @@
       <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
       <Column Name="Phone" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Order_OrderDetail" Member="OrderDetails" ThisKey="OrderId" OtherKey="OrderID" Type="OrderDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderDetails" Member="OrderDetails">
+    <Type Name="OrderDetail">
+      <Column Name="OrderDetailsId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArtikcleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_OrderDetail" Member="Product" ThisKey="ArtikcleID" OtherKey="ArticleId" Type="Product" IsForeignKey="true" />
+      <Association Name="Order_OrderDetail" Member="Order" ThisKey="OrderID" OtherKey="OrderId" Type="Order" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
