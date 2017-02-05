@@ -53,12 +53,12 @@
                 </th>
             </tr>
 
-                    total += (@item.Item.Price * @item.Quantity);
+                total += (@item.Item.Price * @item.Quantity);
 
 
 
-                }
             }
+        }
         }
 
 </table>
@@ -72,6 +72,10 @@
 
 <br />
 <br />
-
+@{ 
+    List<ShoppingCart> cart = (List<ShoppingCart>)Session["Cart"];
+    if (cart != null)
+    {
 <a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("Checkout", "Checkout")">Checkout</a>
-
+}
+    }

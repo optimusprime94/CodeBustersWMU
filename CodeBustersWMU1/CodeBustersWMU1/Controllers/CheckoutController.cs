@@ -35,15 +35,19 @@ namespace CodeBustersWMU1.Controllers
         [HttpPost]
         public ActionResult Checkout(FormCollection collection)
         {
-       
+            //var id;
             var order = new Order();
             TryUpdateModel(order);
             db.Orders.InsertOnSubmit(order);
 
             if (ModelState.IsValid)
             {
+                //List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+                //foreach (var item in cartList) {
+                //    id = item.Item.ArticleId;
+                //    item.Item.Remaining -= 1;
+                //}
 
-           
                 db.SubmitChanges();
 
                 return RedirectToAction("CheckoutComplete", new { id = order.OrderId });
