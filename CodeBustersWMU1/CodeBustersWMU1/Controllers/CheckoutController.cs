@@ -53,6 +53,7 @@ namespace CodeBustersWMU1.Controllers
                             select ord;
                     foreach (Product product in query)
                     {
+                       
                         product.Remaining--;
 
                     }
