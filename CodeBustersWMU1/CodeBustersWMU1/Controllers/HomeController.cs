@@ -35,5 +35,13 @@ namespace CodeBustersWMU1.Controllers
             return View();
         }
 
+
+        public ActionResult OrderSearch()
+        {
+            ViewBag.Message = "OrderSearch";
+
+            return View();
+        }
+
     }
 }

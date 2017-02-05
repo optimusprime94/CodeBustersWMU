@@ -316,6 +316,8 @@
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_ProductSuggestion.cshtml" />
     <Content Include="Views\Search\SearchNotFound.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCart.cshtml" />
+    <Content Include="Views\Home\OrderSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">
