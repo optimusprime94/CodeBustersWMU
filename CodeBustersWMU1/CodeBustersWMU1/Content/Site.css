@@ -102,10 +102,12 @@ div.productSuggestionImageContainer > p{
 
 /* Dropdown Button */
 .dropbtn {
-	background-color: #4CAF50;
+	background-color: #2780e3;
 	color: white;
-	padding: 16px;
-	font-size: 16px;
+    height: 50px;
+    display: inline-block;
+	padding: 14.5px 15px;
+	font-size: 15px;
 	border: none;
 	cursor: pointer;
 }
@@ -144,5 +146,5 @@ div.productSuggestionImageContainer > p{
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-	background-color: #3e8e41;
+	background-color: #1967be;
 }
