@@ -24,6 +24,10 @@
                 int price = ViewData["Price"].ToInt();
                 <h3><strong>@price.ToString("C")</strong></h3>
             }
+            @if (ViewData["Remaining"].ToInt() > 0)
+            {
+            @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = ViewData["ArticleId"] }, null)
+            }
 
 
         </div>
