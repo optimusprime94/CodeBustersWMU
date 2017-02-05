@@ -540,7 +540,7 @@ namespace CodeBustersWMU1.Models
       
         [Required(ErrorMessage = "Stad Krävs")]
         [DisplayName("Stad")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
+        [RegularExpression(@"^[a-öA-Ö]+$", ErrorMessage = "Endast Bokstäver!")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
 		public string City
 		{
