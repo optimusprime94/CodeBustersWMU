@@ -33,26 +33,26 @@
                     <li>@Html.ActionLink("Produkter", "Products", "Product")</li>
                     <li>@Html.ActionLink("Om oss", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Order", "OrderSearch", "Home")</li>
+
                 </ul>
-
-
+                
+                
                 @Html.Partial("_LoginPartial")
 
-                @* Search form *@
+                @* Search form
 
-
-                @using (Ajax.BeginForm("Search", "Search",
-                                    new AjaxOptions { UpdateTargetId = "OrderID" }))
-                {
-                    <form class="navbar-form navbar-right" role="search" method="post">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            @Html.TextBox("OrderID", null, new { @class = "form-control" })
-                        </div>
-                    </form>
-                }
-
-
-            </div>
+    <form class="navbar-form navbar-right" role="search" method="post">
+        <div class="form-group">
+            @using (Ajax.BeginForm("Search", "Search",
+                new AjaxOptions { UpdateTargetId = "OrderID" }))
+            {
+            @Html.TextBox("OrderID", null, new {@class = "form-control"})
+            }
+        </div>
+    </form>*@
+                
+                </div>
             </div>
         </div>
 

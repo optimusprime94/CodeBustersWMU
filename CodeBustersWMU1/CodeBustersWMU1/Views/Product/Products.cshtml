@@ -20,25 +20,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.Label("Bild")
+            @Html.DisplayNameFor(model => model.Image)
         </th>
         <th>
-            @Html.Label("Artikel namn")
+            @Html.DisplayNameFor(model => model.ArticleName)
         </th>
         <th>
-            @Html.Label("Pris/st")
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.Label("Lagerstatus")
+            @Html.DisplayNameFor(model => model.Remaining)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @{  String path = "/Images/";
+                @{  String path = "";
                     path = path + @Html.DisplayFor(modelItem => item.Image);
                 }
                     <img src="@path" alt="bild" width="300" height="300" />
