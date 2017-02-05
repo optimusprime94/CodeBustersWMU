@@ -33,75 +33,27 @@ namespace CodeBustersWMU1.Controllers
 
         // POST: Checkout/Checkout
         [HttpPost]
-        public ActionResult CheckoutOut(FormCollection collection)
+        public ActionResult Checkout(FormCollection collection)
         {
-            //int aID = 0;
-            //int quantity, i;
-            //i = 0;
-            //quantity = 0;
-            //  aID = new int[10];
-            var id = db.Orders.Select(q => q.OrderId).Max();
-         
-            int idOrder = Convert.ToInt16(id);
-
-            //List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
-            //foreach (var item in cartList)
-            //{
-            //    aID = item.Item.ArticleId;
-            //    quantity = item.Quantity;
-            //    i++;
-            //}
-
-            Order order = new Models.Order
-            {
-                OrderId = (idOrder + 1),
-                FirstName = collection["Förnamnbox"],
-                SurName = collection["Efternamnbox"],
-                SocialSecurityNumber = Convert.ToInt64(collection["Personnrbox"]),
-                Adress = collection["Postadressbox"],
-                PostalCode = Convert.ToInt32(collection["Postnrbox"]),
-                City = collection["Ortbox"],
-                Email = collection["Epostbox"],
-                Phone = Convert.ToInt32(collection["Telenrbox"]),
-
-            };
-            //OrderDetail detail = new Models.OrderDetail
-            //{
-            //    ArtikcleID = aID,
-            //    OrderID = idOrder,
-            //    Amount = quantity
-            //};
+       
+            var order = new Order();
+            TryUpdateModel(order);
             db.Orders.InsertOnSubmit(order);
-           // db.OrderDetails.InsertOnSubmit(detail);
             try
-            {
-                // TODO: Add insert logic here
+            {               
                 db.SubmitChanges();
 
-                return RedirectToAction("Checkout");
+                return RedirectToAction("CheckoutComplete", new { id = order.OrderId });
             }
             catch
             {
                 return View();
             }
         }
-        public ActionResult AddCartToOrder()
+public ActionResult CheckoutComplete(int id)
 {
 
-        //    List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
-        //    foreach (var item in cartList)
-        //    {
-
-        //        aID = item.Item.ArticleId;
-        //        quantity = item.Quantity;
-
-    //}
-    return View();
-}
-public ActionResult CheckoutComplete()
-{
-
-    return View();
+    return View(id);
 }
 // GET: Checkout/Edit/5
 public ActionResult Edit(int id)

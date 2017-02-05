@@ -11,18 +11,19 @@
 
 namespace CodeBustersWMU1.Models
 {
-	using System.Data.Linq;
-	using System.Data.Linq.Mapping;
-	using System.Data;
-	using System.Collections.Generic;
-	using System.Reflection;
-	using System.Linq;
-	using System.Linq.Expressions;
-	using System.ComponentModel;
-	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Database1")]
+    using System.Data.Linq;
+    using System.Data.Linq.Mapping;
+    using System.Data;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.ComponentModel;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Database1")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -351,8 +352,8 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Order]")]
+    [Bind(Exclude = "OrderId")]
+    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Order]")]
 	public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -400,15 +401,16 @@ namespace CodeBustersWMU1.Models
     partial void OnEmailChanged();
     partial void OnPhoneChanging(System.Nullable<int> value);
     partial void OnPhoneChanged();
-    #endregion
-		
-		public Order()
+        #endregion
+     
+        public Order()
 		{
 			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+
+        [ScaffoldColumn(false)]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int OrderId
 		{
 			get
@@ -427,8 +429,10 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(20)")]
+       
+        [DisplayName("Förnamn")]
+        [Required(ErrorMessage = "Förnamn Krävs")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(20)")]
 		public string FirstName
 		{
 			get
@@ -447,8 +451,9 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50)")]
+        [Required(ErrorMessage = "Efternamn Krävs")]
+        [DisplayName("Efternamn")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50)")]
 		public string SurName
 		{
 			get
@@ -467,8 +472,9 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
+        [Required(ErrorMessage = "Personnummer Krävs")]
+        [DisplayName("Personnummer (ÅÅMMDD-XXXX)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
 		public System.Nullable<long> SocialSecurityNumber
 		{
 			get
@@ -487,8 +493,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(80)")]
+        [Required(ErrorMessage = "Adress Krävs")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(80)")]
 		public string Adress
 		{
 			get
@@ -507,8 +513,9 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="Int")]
+        [Required(ErrorMessage = "PostNr Krävs")]
+        [DisplayName("PostNr")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="Int")]
 		public System.Nullable<int> PostalCode
 		{
 			get
@@ -527,8 +534,10 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
+      
+        [Required(ErrorMessage = "Stad Krävs")]
+        [DisplayName("Stad")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
 		public string City
 		{
 			get
@@ -547,8 +556,9 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(80)")]
+        [Required(ErrorMessage = "Email  Krävs")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email is is not valid.")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(80)")]
 		public string Email
 		{
 			get
@@ -567,8 +577,9 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int")]
+        [DisplayName("TelefonNr (EX: 0707123456)")]
+        [Required(ErrorMessage = "TelefonNr is krävs")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int")]
 		public System.Nullable<int> Phone
 		{
 			get
