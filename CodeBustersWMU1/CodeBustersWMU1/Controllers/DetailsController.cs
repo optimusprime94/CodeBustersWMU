@@ -31,6 +31,8 @@ namespace CodeBustersWMU1.Controllers
                     ViewData["ArticleName"] = product.ArticleName;
                     ViewData["Price"] = product.Price;
                     ViewData["Image"] = product.Image;
+                    ViewData["ArticleId"] = product.ArticleId;
+                    ViewData["Remaining"] = product.Remaining;
                     break;
                 }
             }
