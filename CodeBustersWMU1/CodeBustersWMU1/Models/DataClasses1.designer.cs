@@ -148,8 +148,8 @@ namespace CodeBustersWMU1.Models
 			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int NOT NULL")]
+        [DisplayName("Lagerstatus")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int NOT NULL")]
 		public int Remaining
 		{
 			get
@@ -168,8 +168,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
+        [DisplayName("Pris")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
 		public int Price
 		{
 			get
@@ -188,8 +188,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+        [DisplayName("Bild")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
 		public string Image
 		{
 			get
@@ -208,8 +208,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
+        [DisplayName("Beskrivning")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
 		public string Description
 		{
 			get
@@ -228,8 +228,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+        [DisplayName("Namn")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string ArticleName
 		{
 			get
@@ -248,8 +248,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+        [DisplayName("Artikel Id")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ArticleId
 		{
 			get
