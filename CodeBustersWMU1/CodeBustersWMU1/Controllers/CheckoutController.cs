@@ -39,10 +39,10 @@ namespace CodeBustersWMU1.Controllers
             var order = new Order();
             TryUpdateModel(order);
             db.Orders.InsertOnSubmit(order);
-
+            // checks if input in the checkout form is valid through the model(database)
             if (ModelState.IsValid)
             {
-
+                //looks up items in the Cart and decrease item amount from the database 
                 List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
                 foreach (var item in cartList)
                 {

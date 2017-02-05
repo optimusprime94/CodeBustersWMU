@@ -68,10 +68,11 @@
 
 <h3><strong>@total.ToString("C")</strong></h3>
 
-@* TO DO: if list is empty don't proceed!!! *@
+
 
 <br />
 <br />
+@*  if list is empty don't proceed to checkout *@
 @{ 
     List<ShoppingCart> cart = (List<ShoppingCart>)Session["Cart"];
     if (cart != null)
