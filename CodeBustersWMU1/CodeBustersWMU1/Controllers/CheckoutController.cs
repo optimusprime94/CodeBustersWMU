@@ -35,74 +35,84 @@ namespace CodeBustersWMU1.Controllers
         [HttpPost]
         public ActionResult Checkout(FormCollection collection)
         {
-            //var id;
+            var id = 0;
             var order = new Order();
             TryUpdateModel(order);
             db.Orders.InsertOnSubmit(order);
 
             if (ModelState.IsValid)
             {
-                //List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
-                //foreach (var item in cartList) {
-                //    id = item.Item.ArticleId;
-                //    item.Item.Remaining -= 1;
-                //}
 
+                List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+                foreach (var item in cartList)
+                {
+                    id = item.Item.ArticleId;
+                    var query =
+                            from ord in db.Products
+                            where ord.ArticleId == id
+                            select ord;
+                    foreach (Product product in query)
+                    {
+                        product.Remaining--;
+
+                    }
+                }
+               
                 db.SubmitChanges();
-
+                Session["Cart"] = null;
                 return RedirectToAction("CheckoutComplete", new { id = order.OrderId });
             }
-            
-                return View();
-        }
-public ActionResult CheckoutComplete(int id)
-{
-           
-    return View(id);
-}
-// GET: Checkout/Edit/5
-public ActionResult Edit(int id)
-{
-    return View();
-}
 
-// POST: Checkout/Edit/5
-[HttpPost]
-public ActionResult Edit(int id, FormCollection collection)
-{
-    try
-    {
+            return View();
+        }
+        public ActionResult CheckoutComplete(int id)
+        {
+
+            return View(id);
+        }
+        // GET: Checkout/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Checkout/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
                 // TODO: Add update logic here
 
-            
+
                 return RedirectToAction("Index");
-    }
-    catch
-    {
-        return View();
-    }
-}
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
-// GET: Checkout/Delete/5
-public ActionResult Delete(int id)
-{
-    return View();
-}
+        // GET: Checkout/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
 
-// POST: Checkout/Delete/5
-[HttpPost]
-public ActionResult Delete(int id, FormCollection collection)
-{
-    try
-    {
-        // TODO: Add delete logic here
+        // POST: Checkout/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
 
-        return RedirectToAction("Index");
-    }
-    catch
-    {
-        return View();
-    }
-}
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
