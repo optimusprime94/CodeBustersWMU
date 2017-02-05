@@ -429,9 +429,9 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-       
+        [Required(ErrorMessage = "Förnamn krävs")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
         [DisplayName("Förnamn")]
-        [Required(ErrorMessage = "Förnamn Krävs")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(20)")]
 		public string FirstName
 		{
@@ -452,6 +452,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
         [Required(ErrorMessage = "Efternamn Krävs")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
         [DisplayName("Efternamn")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50)")]
 		public string SurName
@@ -473,7 +474,8 @@ namespace CodeBustersWMU1.Models
 			}
 		}
         [Required(ErrorMessage = "Personnummer Krävs")]
-        [DisplayName("Personnummer (ÅÅMMDD-XXXX)")]
+        [DisplayName("Personnummer (ÅÅMMDDXXXX)")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
 		public System.Nullable<long> SocialSecurityNumber
 		{
@@ -515,6 +517,7 @@ namespace CodeBustersWMU1.Models
 		}
         [Required(ErrorMessage = "PostNr Krävs")]
         [DisplayName("PostNr")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="Int")]
 		public System.Nullable<int> PostalCode
 		{
@@ -537,6 +540,7 @@ namespace CodeBustersWMU1.Models
       
         [Required(ErrorMessage = "Stad Krävs")]
         [DisplayName("Stad")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
 		public string City
 		{
@@ -557,7 +561,7 @@ namespace CodeBustersWMU1.Models
 			}
 		}
         [Required(ErrorMessage = "Email  Krävs")]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email is is not valid.")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email är ej korrekt!")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(80)")]
 		public string Email
 		{
@@ -578,7 +582,8 @@ namespace CodeBustersWMU1.Models
 			}
 		}
         [DisplayName("TelefonNr (EX: 0707123456)")]
-        [Required(ErrorMessage = "TelefonNr is krävs")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
+        [Required(ErrorMessage = "TelefonNr krävs")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int")]
 		public System.Nullable<int> Phone
 		{

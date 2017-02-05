@@ -39,20 +39,21 @@ namespace CodeBustersWMU1.Controllers
             var order = new Order();
             TryUpdateModel(order);
             db.Orders.InsertOnSubmit(order);
-            try
-            {               
+
+            if (ModelState.IsValid)
+            {
+
+           
                 db.SubmitChanges();
 
                 return RedirectToAction("CheckoutComplete", new { id = order.OrderId });
             }
-            catch
-            {
+            
                 return View();
-            }
         }
 public ActionResult CheckoutComplete(int id)
 {
-
+           
     return View(id);
 }
 // GET: Checkout/Edit/5
@@ -67,9 +68,10 @@ public ActionResult Edit(int id, FormCollection collection)
 {
     try
     {
-        // TODO: Add update logic here
+                // TODO: Add update logic here
 
-        return RedirectToAction("Index");
+            
+                return RedirectToAction("Index");
     }
     catch
     {
