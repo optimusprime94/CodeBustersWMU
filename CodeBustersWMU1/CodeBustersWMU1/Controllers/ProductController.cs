@@ -61,7 +61,7 @@ namespace CodeBustersWMU1.Controllers
         }
 
 
-        public ActionResult AddToCart(int id) { 
+        public ActionResult AddToCart(int id, string fromView) { 
         
 
             var session = HttpContext.Session;
@@ -80,7 +80,7 @@ namespace CodeBustersWMU1.Controllers
                 if (item.Item.ArticleId == id)
                 {
                     item.Quantity++;    
-                    return RedirectToAction("ShoppingBag");
+                    return RedirectToAction(fromView);
                 }
             }
 
@@ -103,10 +103,13 @@ namespace CodeBustersWMU1.Controllers
                 cartList.Add(cartItem);
             }
 
-
-
-            // Go back to the main store page for more shopping
-            return RedirectToAction("ShoppingBag");
+            if (fromView == "Details")
+            {
+                return RedirectToAction("Details", "Details", new {id = id, fromView = fromView});
+            }
+            // Is meant to go back to the view that called the action, 
+            // by passing the fromView string.
+            return RedirectToAction(fromView);
             
 
         }
@@ -119,7 +122,7 @@ namespace CodeBustersWMU1.Controllers
             if (session["Cart"] == null || id == 0)
             {
                 // Cannot remove items...
-                return RedirectToAction("ShoppingBag");
+                return RedirectToAction("Products");
 
             }
 
@@ -146,5 +149,6 @@ namespace CodeBustersWMU1.Controllers
 
 
         }
+
     }
 }

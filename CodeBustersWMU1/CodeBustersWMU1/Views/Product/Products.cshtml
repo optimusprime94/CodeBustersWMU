@@ -14,7 +14,7 @@
 
 
 
-<h2>Produkter</h2>
+<h2>@ViewBag.Title</h2>
 
 
 <table class="table">
@@ -97,9 +97,9 @@
 
             <td>
 
-                
+                @* Add to cart is only shown if there are remaining products in store *@
                 @if (int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString()) > 0){
-                    @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = @item.ArticleId }, null)
+                    @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = @item.ArticleId, fromView = "Products" }, null)
                     }
 </td>
         </tr>

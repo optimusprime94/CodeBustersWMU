@@ -48,7 +48,7 @@
                     @item.Quantity
                 </th>
                 <th>
-                    @Html.ActionLink("Lägg till", "AddToCart", "Product", new { id = @item.Item.ArticleId }, null)
+                    @Html.ActionLink("Lägg till", "AddToCart", "Product", new { id = @item.Item.ArticleId, fromView = "ShoppingBag" }, null)
                     @Html.ActionLink("Ta bort", "RemoveFromCart", "Product", new { id = @item.Item.ArticleId }, null)
                 </th>
             </tr>

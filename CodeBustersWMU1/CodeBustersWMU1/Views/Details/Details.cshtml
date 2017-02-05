@@ -26,7 +26,7 @@
             }
             @if (ViewData["Remaining"].ToInt() > 0)
             {
-            @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = ViewData["ArticleId"] }, null)
+            @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = ViewData["ArticleId"], fromView = "Details" }, null)
             }
 
 
