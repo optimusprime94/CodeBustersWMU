@@ -11,36 +11,36 @@
 
 namespace CodeBustersWMU1.Models
 {
-    using System.Data.Linq;
-    using System.Data.Linq.Mapping;
-    using System.Data;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.ComponentModel;
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
+	using System.Data.Linq;
+	using System.Data.Linq.Mapping;
+	using System.Data;
+	using System.Collections.Generic;
+	using System.Reflection;
+	using System.Linq;
+	using System.Linq.Expressions;
+	using System.ComponentModel;
+	using System;
+	using System.ComponentModel.DataAnnotations;
+	using System.Web.Mvc;
 
-    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Database1")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Database1")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
-    #region Extensibility Method Definitions
-    partial void OnCreated();
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
-    partial void InsertOrder(Order instance);
-    partial void UpdateOrder(Order instance);
-    partial void DeleteOrder(Order instance);
-    partial void InsertOrderDetail(OrderDetail instance);
-    partial void UpdateOrderDetail(OrderDetail instance);
-    partial void DeleteOrderDetail(OrderDetail instance);
-    #endregion
+	#region Extensibility Method Definitions
+	partial void OnCreated();
+	partial void InsertProduct(Product instance);
+	partial void UpdateProduct(Product instance);
+	partial void DeleteProduct(Product instance);
+	partial void InsertOrder(Order instance);
+	partial void UpdateOrder(Order instance);
+	partial void DeleteOrder(Order instance);
+	partial void InsertOrderDetail(OrderDetail instance);
+	partial void UpdateOrderDetail(OrderDetail instance);
+	partial void DeleteOrderDetail(OrderDetail instance);
+	#endregion
 		
 		public DataClasses1DataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Database1ConnectionString1"].ConnectionString, mappingSource)
@@ -125,31 +125,31 @@ namespace CodeBustersWMU1.Models
 		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRemainingChanging(int value);
-    partial void OnRemainingChanged();
-    partial void OnPriceChanging(int value);
-    partial void OnPriceChanged();
-    partial void OnImageChanging(string value);
-    partial void OnImageChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnArticleNameChanging(string value);
-    partial void OnArticleNameChanged();
-    partial void OnArticleIdChanging(int value);
-    partial void OnArticleIdChanged();
-    #endregion
+	#region Extensibility Method Definitions
+	partial void OnLoaded();
+	partial void OnValidate(System.Data.Linq.ChangeAction action);
+	partial void OnCreated();
+	partial void OnRemainingChanging(int value);
+	partial void OnRemainingChanged();
+	partial void OnPriceChanging(int value);
+	partial void OnPriceChanged();
+	partial void OnImageChanging(string value);
+	partial void OnImageChanged();
+	partial void OnDescriptionChanging(string value);
+	partial void OnDescriptionChanged();
+	partial void OnArticleNameChanging(string value);
+	partial void OnArticleNameChanged();
+	partial void OnArticleIdChanging(int value);
+	partial void OnArticleIdChanged();
+	#endregion
 		
 		public Product()
 		{
 			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
 			OnCreated();
 		}
-        [DisplayName("Lagerstatus")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int NOT NULL")]
+		[DisplayName("Lagerstatus")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remaining", DbType="Int NOT NULL")]
 		public int Remaining
 		{
 			get
@@ -168,8 +168,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [DisplayName("Pris")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
+		[DisplayName("Pris/st")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
 		public int Price
 		{
 			get
@@ -188,8 +188,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [DisplayName("Bild")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+		[DisplayName("Bild")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
 		public string Image
 		{
 			get
@@ -208,8 +208,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [DisplayName("Beskrivning")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
+		[DisplayName("Beskrivning")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(400) NOT NULL", CanBeNull=false)]
 		public string Description
 		{
 			get
@@ -228,8 +228,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [DisplayName("Namn")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[DisplayName("Artikel namn")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string ArticleName
 		{
 			get
@@ -248,8 +248,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [DisplayName("Artikel Id")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[DisplayName("Artikel Id")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArticleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ArticleId
 		{
 			get
@@ -352,8 +352,8 @@ namespace CodeBustersWMU1.Models
 			}
 		}
 	}
-    [Bind(Exclude = "OrderId")]
-    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Order]")]
+	[Bind(Exclude = "OrderId")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Order]")]
 	public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -379,38 +379,38 @@ namespace CodeBustersWMU1.Models
 		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnOrderIdChanging(int value);
-    partial void OnOrderIdChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnSurNameChanging(string value);
-    partial void OnSurNameChanged();
-    partial void OnSocialSecurityNumberChanging(System.Nullable<long> value);
-    partial void OnSocialSecurityNumberChanged();
-    partial void OnAdressChanging(string value);
-    partial void OnAdressChanged();
-    partial void OnPostalCodeChanging(System.Nullable<int> value);
-    partial void OnPostalCodeChanged();
-    partial void OnCityChanging(string value);
-    partial void OnCityChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPhoneChanging(System.Nullable<int> value);
-    partial void OnPhoneChanged();
-        #endregion
-     
-        public Order()
+	#region Extensibility Method Definitions
+	partial void OnLoaded();
+	partial void OnValidate(System.Data.Linq.ChangeAction action);
+	partial void OnCreated();
+	partial void OnOrderIdChanging(int value);
+	partial void OnOrderIdChanged();
+	partial void OnFirstNameChanging(string value);
+	partial void OnFirstNameChanged();
+	partial void OnSurNameChanging(string value);
+	partial void OnSurNameChanged();
+	partial void OnSocialSecurityNumberChanging(System.Nullable<long> value);
+	partial void OnSocialSecurityNumberChanged();
+	partial void OnAdressChanging(string value);
+	partial void OnAdressChanged();
+	partial void OnPostalCodeChanging(System.Nullable<int> value);
+	partial void OnPostalCodeChanged();
+	partial void OnCityChanging(string value);
+	partial void OnCityChanged();
+	partial void OnEmailChanging(string value);
+	partial void OnEmailChanged();
+	partial void OnPhoneChanging(System.Nullable<int> value);
+	partial void OnPhoneChanged();
+		#endregion
+	 
+		public Order()
 		{
 			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
 			OnCreated();
 		}
 
-        [ScaffoldColumn(false)]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[ScaffoldColumn(false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int OrderId
 		{
 			get
@@ -429,10 +429,10 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [Required(ErrorMessage = "Förnamn krävs")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
-        [DisplayName("Förnamn")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(20)")]
+		[Required(ErrorMessage = "Förnamn krävs")]
+		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
+		[DisplayName("Förnamn")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(20)")]
 		public string FirstName
 		{
 			get
@@ -451,10 +451,10 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [Required(ErrorMessage = "Efternamn Krävs")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
-        [DisplayName("Efternamn")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50)")]
+		[Required(ErrorMessage = "Efternamn Krävs")]
+		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Endast Bokstäver!")]
+		[DisplayName("Efternamn")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50)")]
 		public string SurName
 		{
 			get
@@ -473,10 +473,10 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [Required(ErrorMessage = "Personnummer Krävs")]
-        [DisplayName("Personnummer (ÅÅMMDDXXXX)")]
-        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
+		[Required(ErrorMessage = "Personnummer Krävs")]
+		[DisplayName("Personnummer (ÅÅMMDDXXXX)")]
+		[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSecurityNumber", DbType="BigInt")]
 		public System.Nullable<long> SocialSecurityNumber
 		{
 			get
@@ -495,8 +495,8 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [Required(ErrorMessage = "Adress Krävs")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(80)")]
+		[Required(ErrorMessage = "Adress Krävs")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(80)")]
 		public string Adress
 		{
 			get
@@ -515,10 +515,10 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [Required(ErrorMessage = "PostNr Krävs")]
-        [DisplayName("PostNr")]
-        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="Int")]
+		[Required(ErrorMessage = "PostNr Krävs")]
+		[DisplayName("PostNr")]
+		[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="Int")]
 		public System.Nullable<int> PostalCode
 		{
 			get
@@ -537,11 +537,11 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-      
-        [Required(ErrorMessage = "Stad Krävs")]
-        [DisplayName("Stad")]
-        [RegularExpression(@"^[a-öA-Ö]+$", ErrorMessage = "Endast Bokstäver!")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
+	  
+		[Required(ErrorMessage = "Stad Krävs")]
+		[DisplayName("Stad")]
+		[RegularExpression(@"^[a-öA-Ö]+$", ErrorMessage = "Endast Bokstäver!")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
 		public string City
 		{
 			get
@@ -560,9 +560,9 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [Required(ErrorMessage = "Email  Krävs")]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email är ej korrekt!")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(80)")]
+		[Required(ErrorMessage = "Email  Krävs")]
+		[RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email är ej korrekt!")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(80)")]
 		public string Email
 		{
 			get
@@ -581,10 +581,10 @@ namespace CodeBustersWMU1.Models
 				}
 			}
 		}
-        [DisplayName("TelefonNr (EX: 0707123456)")]
-        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
-        [Required(ErrorMessage = "TelefonNr krävs")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int")]
+		[DisplayName("TelefonNr (EX: 0707123456)")]
+		[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Endast Siffror!")]
+		[Required(ErrorMessage = "TelefonNr krävs")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int")]
 		public System.Nullable<int> Phone
 		{
 			get
@@ -668,19 +668,19 @@ namespace CodeBustersWMU1.Models
 		
 		private EntityRef<Order> _Order;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnOrderDetailsIdChanging(int value);
-    partial void OnOrderDetailsIdChanged();
-    partial void OnOrderIDChanging(System.Nullable<int> value);
-    partial void OnOrderIDChanged();
-    partial void OnArtikcleIDChanging(System.Nullable<int> value);
-    partial void OnArtikcleIDChanged();
-    partial void OnAmountChanging(System.Nullable<int> value);
-    partial void OnAmountChanged();
-    #endregion
+	#region Extensibility Method Definitions
+	partial void OnLoaded();
+	partial void OnValidate(System.Data.Linq.ChangeAction action);
+	partial void OnCreated();
+	partial void OnOrderDetailsIdChanging(int value);
+	partial void OnOrderDetailsIdChanged();
+	partial void OnOrderIDChanging(System.Nullable<int> value);
+	partial void OnOrderIDChanged();
+	partial void OnArtikcleIDChanging(System.Nullable<int> value);
+	partial void OnArtikcleIDChanged();
+	partial void OnAmountChanging(System.Nullable<int> value);
+	partial void OnAmountChanged();
+	#endregion
 		
 		public OrderDetail()
 		{
