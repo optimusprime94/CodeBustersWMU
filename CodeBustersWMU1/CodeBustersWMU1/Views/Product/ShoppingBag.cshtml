@@ -27,7 +27,7 @@
 
 
     @{
-        int total = 0;
+        double total = 0.0;
         if (Session["Cart"] != null)
         {
             List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
@@ -42,7 +42,11 @@
                     @Html.ActionLink(@item.Item.ArticleName, "Details", "Details", new { id = @item.Item.ArticleId }, null)
                 </th>
                 <th>
-                    @item.Item.Price.ToString("C")
+                    @{
+                        double withTax = @item.Item.Price * 1.25;
+                        
+                    }
+                    @withTax.ToString("C")
                 </th>
                 <th>
                     @item.Quantity
@@ -53,7 +57,7 @@
                 </th>
             </tr>
 
-                total += (@item.Item.Price * @item.Quantity);
+                total += (withTax * @item.Quantity);
 
 
 
@@ -77,6 +81,9 @@
     List<ShoppingCart> cart = (List<ShoppingCart>)Session["Cart"];
     if (cart != null)
     {
-<a type="button" class="btn btn-primary btn-md" id="" href="@Url.Action("Checkout", "Checkout")">Checkout</a>
-}
+        if (cart.Any())
+        {
+            <a type="button" class="btn btn-primary btn-md" href="@Url.Action("Checkout", "Checkout")">Beställ</a>
+        }
+    }
     }

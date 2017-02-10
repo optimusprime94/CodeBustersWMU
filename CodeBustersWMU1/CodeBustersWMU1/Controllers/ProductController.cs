@@ -66,7 +66,7 @@ namespace CodeBustersWMU1.Controllers
 
             var session = HttpContext.Session;
             
-            // we need a shopping cart if we dont already have one.
+            // we need a shopping cart if we don't already have one.
             if (session["Cart"] == null)
             {
                 Session["Cart"] = new List<ShoppingCart>();
@@ -79,7 +79,13 @@ namespace CodeBustersWMU1.Controllers
             {
                 if (item.Item.ArticleId == id)
                 {
-                    item.Quantity++;    
+                    item.Quantity++;
+
+                    if (fromView.Equals("Details"))
+                    {
+                        return RedirectToAction("Details", "Details", new { id = id, fromView = fromView });
+                    }
+
                     return RedirectToAction(fromView);
                 }
             }
@@ -103,7 +109,7 @@ namespace CodeBustersWMU1.Controllers
                 cartList.Add(cartItem);
             }
 
-            if (fromView == "Details")
+            if (fromView.Equals("Details"))
             {
                 return RedirectToAction("Details", "Details", new {id = id, fromView = fromView});
             }

@@ -64,8 +64,8 @@
             </td>
             <td>
                     @{
-                        int price = item.Price;
-                        string priceString = price.ToString("C");
+                        double withTax = item.Price * 1.25;
+                        string priceString = withTax.ToString("C");
                        <label>@priceString</label>
                     }
             </td>
