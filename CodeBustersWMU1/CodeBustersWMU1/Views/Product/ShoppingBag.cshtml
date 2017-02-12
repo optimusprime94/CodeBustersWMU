@@ -1,4 +1,5 @@
-﻿@using CodeBustersWMU1.Models;
+﻿@model IEnumerable<CodeBustersWMU1.Models.Product>
+@using CodeBustersWMU1.Models;
 @{
     ViewBag.Title = "Shoppingbag";
 }
@@ -11,16 +12,16 @@
 <table class="table" style="border:thin">
     <tr>
         <th>
-            @Html.DisplayNameForModel(Model -> ModelItem)
+            @Html.DisplayNameFor(model => model.ArticleName)
         </th>
         <th>
-            @Html.Label("Artikel")
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.Label("Pris/st")
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.Label("Antal")
+            @Html.DisplayNameFor(model => model.Remaining)
         </th>
         <th></th>
     </tr>
