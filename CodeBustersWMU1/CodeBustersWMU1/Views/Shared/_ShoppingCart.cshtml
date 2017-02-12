@@ -1,0 +1,61 @@
+﻿@using CodeBustersWMU1.Models;
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="http://icono-49d6.kxcdn.com/icono.min.css">
+
+@* Dropdown button, with a foreach loop in razor syntax that iterates through the cartItem list and adds the item
+   to the dropdown content, the total and the checkout button is kept outside the loop...for obvious reasons.  
+   <button class="btn btn-primary btn-md"><span class="icono-cart"></span></button>*@
+
+<div class="dropdown">
+    <button class="dropbtn"><span class="icono-cart"></span></button>
+    <div class="dropdown-content">
+
+        @{
+            double total = 0.0;
+            if (Session["Cart"] != null)
+            {
+                List<ShoppingCart> cartList = (List<ShoppingCart>) Session["Cart"];
+                foreach (var item in cartList)
+                {
+                    double withTax = @item.Item.Price * 1.25;
+                    total += withTax * @item.Quantity;
+
+                    <p>
+                        <strong>
+                            @Html.ActionLink(@item.Item.ArticleName
+                                , "Details", "Details", new {id = @item.Item.ArticleId}, null)
+                        </strong>
+
+                        Pris/st: @withTax.ToString("C") Antal: @item.Quantity
+                    </p>
+
+
+                }
+            }
+        }
+        <br/>
+        <p align="right">
+        <strong>Total pris: @total.ToString("C")</strong> 
+
+            
+            @{
+                List<ShoppingCart> cart = (List<ShoppingCart>)Session["Cart"];
+                if (cart != null)
+                {
+                    if (cart.Any())
+                    {
+                        <a type="button" class="btn btn-primary btn-md" href="@Url.Action("ShoppingBag", "Product")">Checka ut</a>
+                    }
+                }
+            }
+    </div>
+</div>
+
+
+
+
+
+
+
+

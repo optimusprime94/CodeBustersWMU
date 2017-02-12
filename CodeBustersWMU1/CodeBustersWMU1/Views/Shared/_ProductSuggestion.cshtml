@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CodeBustersWMU1.Models.Product>
+@{
+    ViewBag.Title = "Produkt förslag";
+}
+
+<h2> @ViewBag.Title </h2>
+
+<hr /> @*thematic break*@
+
+<div id="productSuggestion">
+    <div id="productSuggestionContainer">
+        @{
+            int i = 0;
+
+            foreach (var item in Model)
+            {
+
+                if (i < 5)
+                {
+
+                    <div class="productSuggestionImageContainer">
+                        @{  String path = "";
+                            path = path + @Html.DisplayFor(modelItem => item.Image).ToString();
+                        }
+                        <a href="@Url.Action("Details", "Details", new { id = @item.ArticleId })">
+                            <img src="@path" alt="bild" class="productSuggestionImage" />
+                        </a>
+                        <p>
+                            @item.ArticleName
+                        </p>
+                    </div>
+                    i++;
+                }
+            }
+
+        }
+    </div>
+</div>
+<hr />
+
