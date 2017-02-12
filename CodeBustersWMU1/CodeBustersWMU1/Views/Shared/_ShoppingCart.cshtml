@@ -21,22 +21,22 @@
                     double withTax = @item.Item.Price * 1.25;
                     total += withTax * @item.Quantity;
 
-                    <p>
+
                         <strong>
                             @Html.ActionLink(@item.Item.ArticleName
                                 , "Details", "Details", new {id = @item.Item.ArticleId}, null)
                         </strong>
-
-                        Pris/st: @withTax.ToString("C") Antal: @item.Quantity
-                    </p>
+                        <p style="margin-left: 15px">
+                            Pris/st: @withTax.ToString("C") Antal: @item.Quantity
+                        </p>
 
 
                 }
             }
         }
         <br/>
-        <p align="right">
-        <strong>Total pris: @total.ToString("C")</strong> 
+        <p align="right" style="margin-right: 5px">
+        <strong>Total pris: @total.ToString("C")  </strong> 
 
             
             @{

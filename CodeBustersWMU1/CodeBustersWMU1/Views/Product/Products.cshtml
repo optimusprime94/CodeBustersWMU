@@ -5,12 +5,7 @@
 }
 
 @* css styling för att description div taggen inte ska bli för bred *@
-<style type="text/css">
-    #description {
-        width: 300px;
-        margin: auto;
-    }
-</style>
+
 
 
 
@@ -37,12 +32,12 @@
     {
         <tr>
             <td>
-                @{  String path = "";
-                    path = path + @Html.DisplayFor(modelItem => item.Image);
+                @{  String path = "~/Content/Images/";
+                    path = @path + @Html.DisplayFor(modelItem => item.Image);
                 }
-                    <img src="@path" alt="bild" width="300" height="300" />
+                <img src="@Url.Content(@path)" alt="bild" width="250" height="250" />
 
-               
+
             </td>
 
             <td>
@@ -63,49 +58,67 @@
                 </div>
             </td>
             <td>
-                    @{
-                        double withTax = item.Price * 1.25;
-                        string priceString = withTax.ToString("C");
-                       <label>@priceString</label>
-                    }
+                @{
+                    double withTax = item.Price * 1.25;
+                    string priceString = withTax.ToString("C");
+                    <label>@priceString</label>
+                }
             </td>
             <td>
                 @{
                     /* Different status message, depending on remaining quantity */
                     string message = "";
                     int remains = int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString());
+
+                    /* This is to update the remaining quantity in the products page in relation to the shoppingcart. */
+                    if (Session["Cart"] != null)
+                    {
+                        List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
+
+                        foreach (var cartitem in cartList)
+                        {
+                            if (cartitem.Item.ArticleId == @item.ArticleId)
+                            {
+                                remains -= cartitem.Quantity;
+                                break;
+                            }
+                        }
+                    }
+
                     if (remains == 0)
                     {
                         message = "Slut i lager";
+                        <p style="color: red">@message</p>
                     }
                     else if (remains <= 5)
                     {
                         message = "Bara " + remains + "st kvar";
-                    }
-                    else if (remains <= 10)
-                    {
-                        message = "Bara ett fåtal kvar";
+                        <p>@message</p>
                     }
                     else
                     {
                         message = "Finns i lager";
+                        <p style="color: green">@message</p>
                     }
                 }
-                <p>@message</p>
+
 
             </td>
 
             <td>
 
                 @* Add to cart is only shown if there are remaining products in store *@
-                @if (int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString()) > 0){
-                    @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = @item.ArticleId, fromView = "Products" }, null)
-                    }
-</td>
+                @if (int.Parse(@Html.DisplayFor(modelItem => item.Remaining).ToString()) > 0)
+                {
+                    @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new {id = @item.ArticleId, fromView = "Products"}, null)
+                }
+
+
+            </td>
         </tr>
                     } @* For each loop, end *@
 
 
 
 
-</table>
+                </table>

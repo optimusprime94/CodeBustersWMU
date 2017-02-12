@@ -12,8 +12,9 @@
         <div class="col-md-4">
             @{
                 string path = @ViewData["Image"].ToString();
+                path = @"~/Content/Images/" + @path;
             }
-            <img src="@path" alt="Pokemon" width="400" height="400"/>
+            <img src="@Url.Content(@path)" alt="Pokemon" width="400" height="400" />
 
         </div>
 
@@ -24,9 +25,16 @@
                 double withTax = ViewData["Price"].ToInt() * 1.25;
                 <h3><strong>@withTax.ToString("C")</strong></h3>
             }
+            
+            <br/>
+
             @if (ViewData["Remaining"].ToInt() > 0)
             {
-            @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new { id = ViewData["ArticleId"], fromView = "Details" }, null)
+                @Html.ActionLink("Lägg i Kundvagn", "AddToCart", "Product", new {id = ViewData["ArticleId"], fromView = "Details"}, null)
+            }
+            else
+            {
+                <h4 style="color:red">Slutsåld</h4>
             }
 
 

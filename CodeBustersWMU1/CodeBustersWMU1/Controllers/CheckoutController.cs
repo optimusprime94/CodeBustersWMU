@@ -35,36 +35,50 @@ namespace CodeBustersWMU1.Controllers
         [HttpPost]
         public ActionResult Checkout(FormCollection collection)
         {
-            var id = 0;
-            var order = new Order();
-            TryUpdateModel(order);
-            db.Orders.InsertOnSubmit(order);
-            // checks if input in the checkout form is valid through the model(database)
-            if (ModelState.IsValid)
+            try
             {
-                //looks up items in the Cart and decrease item amount from the database 
-                List<ShoppingCart> cartList = (List<ShoppingCart>)Session["Cart"];
-                foreach (var item in cartList)
+                var id = 0;
+                var order = new Order();
+                TryUpdateModel(order);
+                db.Orders.InsertOnSubmit(order);
+                // checks if input in the checkout form is valid through the model(database)
+                if (ModelState.IsValid)
                 {
-                    id = item.Item.ArticleId;
-                    var query =
+                    //looks up items in the Cart and decrease item amount from the database 
+                    List<ShoppingCart> cartList = (List<ShoppingCart>) Session["Cart"];
+                    foreach (var item in cartList)
+                    {
+                        id = item.Item.ArticleId;
+                        var query =
                             from ord in db.Products
                             where ord.ArticleId == id
                             select ord;
-                    foreach (Product product in query)
-                    {
-                       
-                        product.Remaining--;
+                        foreach (Product product in query)
+                        {
 
+                            product.Remaining--;
+
+                            // to check for possible quantity errors 
+                            // redirect the customer to an error page in that case.
+                            if (product.Remaining < 0)
+                            {
+                                return RedirectToAction("ContactCustomerService");
+                            }
+                        }
                     }
-                }
-               
-                db.SubmitChanges();
-                Session["Cart"] = null;
-                return RedirectToAction("CheckoutComplete", new { id = order.OrderId });
-            }
 
-            return View();
+                    db.SubmitChanges();
+                    Session["Cart"] = null;
+                    return RedirectToAction("CheckoutComplete", new {id = order.OrderId});
+                }
+
+                return View();
+            }
+            // if other problems occur
+            catch
+            {
+                return RedirectToAction("ContactCustomerService");
+            }
         }
         public ActionResult CheckoutComplete(int id)
         {
@@ -77,43 +91,10 @@ namespace CodeBustersWMU1.Controllers
             return View();
         }
 
-        // POST: Checkout/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Checkout/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult ContactCustomerService()
         {
             return View();
-        }
-
-        // POST: Checkout/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

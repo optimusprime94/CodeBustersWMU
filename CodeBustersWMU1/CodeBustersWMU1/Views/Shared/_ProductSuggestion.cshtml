@@ -19,11 +19,12 @@
                 {
 
                     <div class="productSuggestionImageContainer">
-                        @{  String path = "";
-                            path = path + @Html.DisplayFor(modelItem => item.Image).ToString();
+                        @{  String path = "~/Content/Images/";
+                    path = @path + @Html.DisplayFor(modelItem => item.Image);
                         }
+
                         <a href="@Url.Action("Details", "Details", new { id = @item.ArticleId })">
-                            <img src="@path" alt="bild" class="productSuggestionImage" />
+                            <img src="@Url.Content(@path)" alt="bild" class="productSuggestionImage" />
                         </a>
                         <p>
                             @item.ArticleName

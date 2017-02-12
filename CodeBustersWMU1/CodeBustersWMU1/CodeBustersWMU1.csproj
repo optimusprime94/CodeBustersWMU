@@ -229,6 +229,17 @@
     </Content>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\Images\004Charmander.png" />
+    <Content Include="Content\Images\025Pikachu.png" />
+    <Content Include="Content\Images\144Articuno.png" />
+    <Content Include="Content\Images\145Zapdos.png" />
+    <Content Include="Content\Images\146Moltres.png" />
+    <Content Include="Content\Images\150Mewtwo.png" />
+    <Content Include="Content\Images\214Heracross.png" />
+    <Content Include="Content\Images\470Leafeon.png" />
+    <Content Include="Content\Images\478Froslass.png" />
+    <Content Include="Content\Images\701Hawlucha.png" />
+    <Content Include="Content\Images\king.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -319,6 +330,7 @@
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
     <Content Include="Views\Home\OrderSearch.cshtml" />
     <Content Include="Views\Checkout\CheckoutComplete.cshtml" />
+    <Content Include="Views\Checkout\ContactCustomerService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">
